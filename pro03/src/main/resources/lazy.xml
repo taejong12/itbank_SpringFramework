@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="firstBean"
+		class="com.test.pro03.ex09.First" 
+			lazy-init="false" />
+	<bean id="secondBean"
+		class="com.test.pro03.ex09.Second" 
+			lazy-init="true" />
+	<bean id="thirdBean"
+		class="com.test.pro03.ex09.Third" 
+			lazy-init="default" />
+</beans>

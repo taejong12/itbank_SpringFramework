@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 
+		id : bean 호출 이름
+		class : 실제 구현 클래스 지정
+		property : 속성 (name : 변수 이름)
+		value : 변수의 값
+		property 는 set 메서드로 DI 구현 
+	-->
+	<bean id="personService"
+		class="com.test.pro03.ex06.PersonServiceImpl">
+		<property name="name">
+			<value>홍길동</value>
+		</property>
+		<property name="age">
+			<value>20</value>
+		</property>
+	</bean>
+</beans>

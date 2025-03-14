@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 
+		id : bean 호출 이름
+		class : 실제 구현 클래스 지정
+
+	-->
+	<bean id="personService1"
+		class="com.test.pro03.ex07.PersonServiceImpl">
+		<constructor-arg value="이순신" />
+	</bean>
+	<bean id="personService2"
+		class="com.test.pro03.ex07.PersonServiceImpl">
+		<constructor-arg value="25" />
+		<constructor-arg value="김유신" />
+	</bean>
+</beans>
