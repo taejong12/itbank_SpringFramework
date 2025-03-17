@@ -8,6 +8,8 @@ public class TV {
 	}
 	
 	public static void main(String[] args) {
-		r.on();
+//		TV tv = new TV(new LG());
+		TV tv = new TV(new Samsung());
+		tv.r.on();
 	}
 }

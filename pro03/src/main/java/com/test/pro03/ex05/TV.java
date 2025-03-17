@@ -8,6 +8,9 @@ public class TV {
 	}
 	
 	public static void main(String[] args) {
-		r.on();
+		TV tv = new TV();
+		//tv.setRemote(new Samsung());
+		tv.setRemote(new LG());
+		tv.r.on();
 	}
 }
