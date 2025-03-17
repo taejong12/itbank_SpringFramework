@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!-- 컨텍스트파람 -->
+	<context-param>
+	<!-- 프로젝트가 실행되면 이 내용을 톰캣에 전달 -->
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+	
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<!-- 이 프로젝트가 실행될 때 어떤 이벤트가 있는지 대기상태로 만들어줌 -->
+	<!-- 어떤 특정 기능이 올 때까지 기다림 -->
+	<listener>
+		<!-- Context: 프로젝트, Loader: 불러옴, Listener: 대기상태 -->
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Processes application requests -->
+	<!-- 서블릿 -->
+	<!--  -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<!--  -->
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 이 xml을 넘겨줌 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<!-- 객체생성 우선순위 1:제일 첫번째 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<!-- 디스패처서블에서 /로 시작하는 모든 것들을 관리 -->
+		<!-- *.do do로 끝나는 애들만 -->
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+</web-app>
