@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<!-- context:component-scan : base-package 에 있는 모든 객체를 자동 생성 -->
+	<context:component-scan base-package="com.test.pro04" />
+	<bean id="aopAdvice" 
+		class="com.test.pro04.ex02.AOPAdvice" />
+	
+	<!-- aop:config - AOP 설정 태그 -->
+	<aop:config>
+		<!-- aop:aspect - 실제 Advice 구현 클래스와 target 지정하는 태그 -->
+		<aop:aspect ref="aopAdvice">
+			<!-- 
+				aop:pointcut 
+				expression = "타켓 설정"
+				id = "pointcut 이름"
+			 -->
+			<aop:pointcut expression="execution(public void com.test.pro04.ex02.*.*(..))" id="aopAdvicePointcut"/>
+			<!--
+				aop:before : 메서드 실행 전 AOP 실행 태그
+				method : Advice 의 메서드 지정
+				pointcut-ref : 참조하는 pointcut
+			 -->
+			<aop:before method="aopMethodBefore" 
+				pointcut-ref="aopAdvicePointcut" />
+			<aop:after method="aopMethodAfter" 
+				pointcut-ref="aopAdvicePointcut" />
+			<aop:around method="aopMethodAround"
+				pointcut-ref="aopAdvicePointcut" />
+			<aop:pointcut 
+				expression="execution(* com.test.pro04.ex02.*.*n*(..))" 
+				id="aopAdvicePointcut2" />
+			<aop:after-returning method="aopMethodReturn" 
+				pointcut-ref="aopAdvicePointcut2"/>
+		</aop:aspect>
+	</aop:config>
+</beans>
+
+
