@@ -1,2 +1,5 @@
+# Eclipse 설정 파일 무시
 target/
+
+# Maven 빌드 디렉터리 무시
 .settings/
