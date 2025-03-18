@@ -2,13 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- lazy-init = "false" -> 컨테이너가 생성될 때 즉시 객체 생성 -->
 	<bean id="firstBean"
 		class="com.test.pro03.ex09.First" 
-			lazy-init="false" />
+		lazy-init="false" />
+		
+	<!-- lazy-init="true" -> Bean이 요청될 떄 (사용될 때) 객체 생성 -->
 	<bean id="secondBean"
 		class="com.test.pro03.ex09.Second" 
-			lazy-init="true" />
+		lazy-init="true" />
+		
+	<!-- lazy-init="default" -> 기본값(false) -> 즉시 객체 생성됨 -->
 	<bean id="thirdBean"
 		class="com.test.pro03.ex09.Third" 
-			lazy-init="default" />
+		lazy-init="default" />
 </beans>

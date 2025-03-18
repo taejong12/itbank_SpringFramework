@@ -3,10 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="boardService" 
-		class="com.test.pro03.quiz.BoardServiceImpl">
+	<!-- 
+		Spring Bean 설정 파일 
+		Bean 설정 파일에서 의존성 주입을 설정 
+		BoardService 구현체 등록 (생성자 주입)
+		Spring 컨테이너가 XML을 기반으로 객체를 생성 및 관리
+		의존성 주입(DI)은 생성자 주입 방식( <constructor-arg ref="boardDAO" />) 
+	-->
+	<bean id="boardService" class="com.test.pro03.quiz.BoardServiceImpl">
 		<constructor-arg ref="boardDAO" />	
 	</bean>
-	<bean id="boardDAO" 
-		class="com.test.pro03.quiz.BoardDAOImpl" />
+	
+	<!-- BoardDAO 구현체 등록 -->
+	<bean id="boardDAO" class="com.test.pro03.quiz.BoardDAOImpl" />
 </beans>

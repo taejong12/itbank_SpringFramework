@@ -6,12 +6,19 @@
 	<!-- 
 		id : bean 호출 이름
 		class : 실제 구현 클래스 지정
-
 	-->
+	<!-- 
+		Spring DI (의존성 주입)
+		생성자 주입 방식
+		XML 설정에서 <constructor-arg> 태그를 사용하여 값을 주입함
+	 -->
+	 <!-- 첫 번째 Bean: name만 주입 -->
 	<bean id="personService1"
 		class="com.test.pro03.ex07.PersonServiceImpl">
 		<constructor-arg value="이순신" />
 	</bean>
+	
+	<!-- 두 번째 Bean: age와 name을 주입 (age가 먼저)  -->
 	<bean id="personService2"
 		class="com.test.pro03.ex07.PersonServiceImpl">
 		<constructor-arg value="25" />

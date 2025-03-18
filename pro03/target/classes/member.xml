@@ -3,10 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="memberService"
-		class="com.test.pro03.ex08.MemberServiceImpl">
+	<!-- MemberService 객체 생성 및 MemberDAO 주입 -->
+	<bean id="memberService" class="com.test.pro03.ex08.MemberServiceImpl">
+		<!-- 1. memberService Bean 생성 -> MemberServiceImpl 객체를 생성 -->
+		<!-- 2. <property> 태그를 사용해 memberDAO를 주입 (Setter Injection) -->
 		<property name="memberDAO" ref="memberDAO" />
 	</bean>
-	<bean id="memberDAO" 
-		class="com.test.pro03.ex08.MemberDAOImpl" />
+	
+	<!-- MemberDAO 객체 생성(memberDAO Bean 생성 -> MemberDAOImpl) -->
+	<bean id="memberDAO" class="com.test.pro03.ex08.MemberDAOImpl" />
 </beans>
