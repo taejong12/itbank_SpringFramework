@@ -11,13 +11,9 @@ public class BoardAdvice implements MethodInterceptor{
 
 	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable {
-		// TODO Auto-generated method stub
 		System.out.println("로그인 확인 메서드");
-		
 		Object obj = invocation.proceed();
-		
 		System.out.println("데이터 확인 메서드");
-		
 		return obj;
 	}
 	

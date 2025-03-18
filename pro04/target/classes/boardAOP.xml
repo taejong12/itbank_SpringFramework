@@ -3,18 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="boardService" 
-		class="com.test.pro04.quiz.BoardServiceImpl">
+	<bean id="boardService" class="com.test.pro04.quiz.BoardServiceImpl">
 		<constructor-arg ref="boardDAO" />	
 	</bean>
-	<bean id="boardDAO" 
-		class="com.test.pro04.quiz.BoardDAOImpl" />
+	<bean id="boardDAO" class="com.test.pro04.quiz.BoardDAOImpl" />
 	
-	<bean id="boardAdvice" 
-		class="com.test.pro04.quiz.BoardAdvice" />
+	<bean id="boardAdvice" class="com.test.pro04.quiz.BoardAdvice" />
 		
-	<bean id="proxyQuiz" 
-		class="org.springframework.aop.framework.ProxyFactoryBean">
+	<bean id="proxyQuiz" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="target" ref="boardService" />
 		<property name="interceptorNames">
 			<list>

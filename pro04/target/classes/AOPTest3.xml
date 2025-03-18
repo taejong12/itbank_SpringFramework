@@ -7,6 +7,9 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
+	<!-- @Component, @Aspect 붙은 클래스 자동 등록 -->
 	<context:component-scan base-package="com.test.pro04.ex03" />
+
+	<!-- AOP 기능 활성화 (프록시로 감싸줌) -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>

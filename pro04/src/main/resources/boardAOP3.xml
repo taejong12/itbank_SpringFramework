@@ -5,14 +5,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
-	<bean id="boardService" 
-		class="com.test.pro04.quiz.BoardServiceImpl">
+	<bean id="boardService" class="com.test.pro04.quiz.BoardServiceImpl">
 		<constructor-arg ref="boardDAO" />	
 	</bean>
-	<bean id="boardDAO" 
-		class="com.test.pro04.quiz.BoardDAOImpl" />
+	<bean id="boardDAO"	class="com.test.pro04.quiz.BoardDAOImpl" />
 	
-	<bean id="boardAdvice" 
-		class="com.test.pro04.quiz.BoardAdvice" />
+	<bean id="boardAdvice" class="com.test.pro04.quiz.BoardAdvice" />
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>

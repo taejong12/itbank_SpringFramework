@@ -3,13 +3,29 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="calcTarget"
-		class="com.test.pro04.ex01.Calculator" />
-	<bean id="logAdvice"
-		class="com.test.pro04.ex01.LoggingAdvice" />
+	<!-- 
+		실제 계산 기능을 수행하는 Bean
+		calcTarget: AOP를 적용할 대상 클래스(Calculator)
+		"calcTarget" -> Calculator 객체를 생성 (AOP 적용 전의 원본 객체)
+	-->
+	<bean id="calcTarget" class="com.test.pro04.ex01.Calculator" />
 	
-	<bean id="proxyCal"
-		class="org.springframework.aop.framework.ProxyFactoryBean">
+	<!-- 
+		AOP 기능을 수행하는 Advice (LoggingAdvice)
+		logAdvice: AOP에서 실행할 보조 기능(LoggingAdvice)
+		"logAdvice" -> LoggingAdvice 객체를 생성 (AOP 적용 로직)
+	-->
+	<bean id="logAdvice" class="com.test.pro04.ex01.LoggingAdvice" />
+	
+	<!-- 
+		AOP 프록시 설정
+		proxyCal: AOP 적용 후 사용할 프록시 객체 
+		ProxyFactoryBean을 사용하여 calcTarget을 감싸고, logAdvice(LoggingAdvice)를 실행하도록 설정
+		"proxyCal" -> AOP 프록시 객체 생성
+		target="calcTarget" -> Calculator를 대상으로 AOP 적용
+		interceptorNames="logAdvice" -> LoggingAdvice를 AOP로 설정 
+	-->
+	<bean id="proxyCal"	class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="target" ref="calcTarget" />
 		<property name="interceptorNames">
 			<list>
