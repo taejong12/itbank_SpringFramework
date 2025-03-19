@@ -1,45 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	web.xml 파일은 Spring MVC 웹 애플리케이션의 설정 파일
+
+	<web-app> 루트 엘리먼트
+	1. 웹 애플리케이션을 정의하는 루트 태그
+	2. version="2.5" -> Servlet 2.5 버전을 사용한다는 뜻
+	3. xmlns와 xsi:schemaLocation -> XML 문서가 올바른 구조인지 검사할 기준(Schema)을 제공
+ -->
+
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
-	<!-- 컨텍스트파람 -->
+	<!-- 
+		<context-param>
+		1. Root Spring Container 설정
+		2. Spring의 기본(전역) 설정 파일(root-context.xml)의 위치를 지정하는 부분
+		3. contextConfigLocation은 Spring의 Root ApplicationContext 설정을 로드하는 역할
+		4. root-context.xml 파일 안에는 공통적으로 사용될 Bean(객체)들을 등록할 수 있음 
+		
+		<param-name>
+	 	1. 설정하려는 파라미터(변수) 이름
+	 	2. Spring 설정 파일 위치를 지정하는 파라미터 이름
+	 	
+	 	<param-value>
+	 	1. 해당 파라미터의 값(설정 값)
+	 	2. 실제 설정 파일 경로 
+	 -->
+	 
 	<context-param>
-	<!-- 프로젝트가 실행되면 이 내용을 톰캣에 전달 -->
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
 	
-	<!-- Creates the Spring Container shared by all Servlets and Filters -->
-	<!-- 이 프로젝트가 실행될 때 어떤 이벤트가 있는지 대기상태로 만들어줌 -->
-	<!-- 어떤 특정 기능이 올 때까지 기다림 -->
+	<!-- 
+		<listener>
+		1. ContextLoaderListener 리스너 등록
+		2. Spring 컨테이너를 애플리케이션이 시작될 때 자동으로 생성하는 역할
+		3. ContextLoaderListener가 Root ApplicationContext(root-context.xml)를 로드해서 전역적으로 공유하는 빈(Bean)을 등록
+	 -->
+	 
 	<listener>
-		<!-- Context: 프로젝트, Loader: 불러옴, Listener: 대기상태 -->
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- Processes application requests -->
-	<!-- 서블릿 -->
-	<!--  -->
+	<!-- 
+		<servlet>
+		1. DispatcherServlet (Spring MVC의 핵심)
+		
+		<servlet-name>
+		1.  이 서블릿(컨트롤러)의 이름을 appServlet으로 지정
+		
+		<servlet-class>
+		1. DispatcherServlet은 Spring MVC의 핵심 컨트롤러
+		2. 사용자의 요청을 받아서 적절한 컨트롤러로 넘겨주는 역할
+		
+		<init-param>
+		1. 서블릿 초기화 설정
+		2. servlet-context.xml을 읽어서 Spring MVC 관련 설정(컨트롤러, 뷰, 리졸버 등)을 정의(MVC 관련 설정 파일)
+		
+		<load-on-startup>
+		1. 이 서블릿을 서버 시작과 동시에 실행(초기화)
+		2. 1은 우선순위를 의미하는데, 숫자가 낮을수록 먼저 실행됨
+	 -->
+	
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
-		<!--  -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<!-- 이 xml을 넘겨줌 -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
-		<!-- 객체생성 우선순위 1:제일 첫번째 -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
+	
+	<!-- 
+		<servlet-mapping>
+		1. URL 패턴 매핑 (*.do로 끝나는 요청을 처리)
+		2. appServlet이 *.로 끝나는 모든 URL 요청을 처리하도록 설정
+		3. 예) http://localhost:8080/pro05/test.do -> DispatcherServlet이 처리
+	 -->
+	
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<!-- 디스패처서블에서 /로 시작하는 모든 것들을 관리 -->
-		<!-- *.do do로 끝나는 애들만 -->
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
+	<!-- 
+		*.do 와 같은 URL 패턴을 사용하는 이유
+		1. 특정한 규칙을 통해 요청을 처리
+		2. Spring MVC에서 처리할 요청들을 구분하기 위함
+		3. 다양한 URL을 하나의 서블릿(DispatcherServlet)이 처리할 수 있음
+		4. DisPatcherServlet이 특정 요청을 처리하도록 명확하게 규정
+		5. 다른 URL 패턴과 충돌을 피하고 역할을 분리할 수 있음
+		
+		요청 URL의 규칙화
+		1. *.do는 모든 요청 URL에서 .do로 끝나는 요청은 DispatcherServlet이 처리한다는 의미
+		
+		DispatcherServlet의 역할
+		1. Spring MVC에서는 DispatcherServlet이 클라이언트의 요청을 받아서 알맞은 컨트롤러로 전달하는 역할
+		2. *.do처럼 URL 패턴을 설정함으로써 웹 애플리케이션의 특정 URL 요청만 DispacherServlet이 처리하도록 설정할 수 있음
+		3. *.do로 설정하면 다른 서블릿이나 필터가 처리하는 URL 패턴과 겹치지 않게 Spring MVC에서만 처리하도록 구분할 수 있음
+		
+		명확한 역할 분리
+		1. *.do와 같은 규칙을 사용함으로써 Spring MVC의 요청을 명확하게 구분할 수 있음
+		2. .jsp, .html 등의 다른 확장자는 뷰를 표시하는 페이지로 사용될 수 있고, .do는 비즈니스 로직을 처리하는 URL로 구분되기도 함
+		3. 이렇게 규칙을 설정하면 서블릿을 분리하고 역할을 명확히 할 수 있어서 관리가 용이함
+	 -->
+
 </web-app>
+
+
+
+
+

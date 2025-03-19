@@ -7,29 +7,69 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
-	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- 
+		Spring MVC의 DispatcherServlet 설정 파일 
+		
+		<annotation-driven />
+		1. 기본 Spring MVC 설정
+		2. @Contrller, @RequestMapping 등 애너테이션 기반 MVC 기능 활성화
+	 -->
+	 
 	<annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- 
+		<resources mapping="/resources/**" location="/resources/" />
+		1. 정적 자원 매핑
+		2. /resources/로 시작하는 요청은 DispatcherServlet을 거치지 않고 바로 /resources/ 폴더 아래에서 찾아서 서빙함
+		3. 보통 CSS, JS, 이미지 같은 static 파일 처리용
+	 -->
+	
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- 
+		<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		1. View Resolver 설정
+		2. 컨트롤러에서 리턴하는 String viewName 앞뒤로 prefix, suffix를 붙여 JSP 경로를 완성
+		3. 예: return "index"; -> /WEB-INF/views/test/index.jsp
+	 -->
+	 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 
+		<context:component-scan base-package="com.test.pro05" />
+		1. @Controller, @Service, @repository 등의 컴포넌트를 찾아서 Bean으로 등록
+		2. 패키지 com.test.pro05 하위에서 검색
+	 -->
+	
 	<context:component-scan base-package="com.test.pro05" />
 	
 	<!-- 
-		SimpleUrlHandlerMapping : controller 하나당 하나의 URL 만 가능 
+		<beans:bean id="simpleUrlController" class="com.test.pro05.ex01.SimpleUrlController" />
+		1. simpleUrlController 빈 등록
+		2. SimpleUrlController 라는 클래스가 클라이언트 요청을 처리하는 컨트롤러 역할
+		3. handleRequest() 메서드가 정의되어 있다면, 이 메서드가 호출되어 요청을 처리하고 결과(View)를 리턴함
 	-->
-	<beans:bean id="simpleUrlController"
-		class="com.test.pro05.ex01.SimpleUrlController" />
-	<beans:bean id="urlMapping"
-		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	
+	<beans:bean id="simpleUrlController" class="com.test.pro05.ex01.SimpleUrlController" />
+	
+	<!-- 
+		<beans:bean id="urlMapping"	class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		1. SimpleUrlHandlerMapping은 요청 URL을 특정 Controller로 연결해주는 매핑 객체
+		2. SimpleUrlHandlerMapping은 controller 하나당 하나의 URL 만 가능(단순 URL 매핑)
+		
+		<beans:property name="mappings">
+		1. 매핑 정보를 담는 부분
+		2. <beans:props> 안에서 key-value 형식으로 URL과 컨트롤러 Bean ID를 연결함
+		
+		<beans:prop key="/test/index.do">simpleUrlController</beans:prop>
+		1. key="/test/index.do" -> 클라이언트가 이 URL로 접근했을 때
+		2. value="simpleUrlController" -> 위에서 정의한 SimpleUrlController 객체로 연결
+	-->
+	
+	<beans:bean id="urlMapping"	class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<beans:property name="mappings">
 			<beans:props>
 				<beans:prop key="/test/index.do">
@@ -37,8 +77,72 @@
 				</beans:prop>
 			</beans:props>
 		</beans:property>
-	</beans:bean>	
+	</beans:bean>
 	
+	<!--
+		<beans:bean id="userUrlMapping"	class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		1. SimpleUrlHandlerMapping을 이용한 URL 패턴 매핑
+		
+		<beans:prop key="/test/*.do">userController</beans:prop>
+		1. key="/test/*.do" => /test/ 하위의 모든 .do 요청을 처리 (예: /test/login.do, /test/memberInfo.do 등)
+		2. valure="userController" => 해당 요청은 userController에서 처리
+		3. 패턴 매칭을 사용하여 하나의 컨트롤러에서 여러 URL을 처리하는 구조
+	 -->
+	
+	<beans:bean id="userUrlMapping"	class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<beans:property name="mappings">
+			<beans:props>
+				<beans:prop key="/test/*.do">userController</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
+	<!--
+		<beans:bean id="userController"	class="com.test.pro05.ex02.UserController">
+		1. com.test.pro05.ex02.UserController라는 클래스를 Spring Bean으로 등록
+		2. 여러 개의 URL 요청을 한 컨트롤러에서 처리하도록 구성
+		3. 특정 URL이 들어오면 어떤 메서드를 실행할지 결정하기 위해 methodNameResolver 사용
+		4. userController는 MultiActionController로 동작하고 userMethodNameResolver가 어떤 메서드가 실행될지 결정함
+	 -->
+
+	<beans:bean id="userController"	class="com.test.pro05.ex02.UserController">
+		<beans:property name="methodNameResolver">
+			<beans:ref bean="userMethodNameResolver" />
+		</beans:property>
+	</beans:bean>
+
+	<!-- 
+		<beans:bean id="userMethodNameResolver" 
+			class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		1. PropertiesMethodNameResolver를 사용하여 요청된 URL과 실행할 메서드를 매핑
+		2. 특정 URL 요청이 들어오면 해당 컨트롤러의 어떤 메서드를 호출할지 결정(URL -> 메서드 이름 변환 역할)
+		
+		"/test/login.do" -> com.test.pro05.ex02.UserController의 login() 메서드 실행
+		"/test/loginForm.do" -> com.test.pro05.ex02.UserController의 loginForm() 메서드 실행
+		"/test/memberForm.do" -> com.test.pro05.ex02.UserController의 memberForm() 메서드 실행
+		"/test/memberInfo.do" -> com.test.pro05.ex02.UserController의 memberInfo() 메서드 실행
+	 -->
+	 
+	<beans:bean id="userMethodNameResolver" 
+		class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<beans:property name="mappings">
+			<beans:props>
+				<beans:prop key="/test/login.do">login</beans:prop>
+				<beans:prop key="/test/loginForm.do">loginForm</beans:prop>
+				<beans:prop key="/test/memberForm.do">memberForm</beans:prop>
+				<beans:prop key="/test/memberInfo.do">memberInfo</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- 
+		실행 흐름
+		1. 클라이언트가 /test/login.do 요청
+		2. SimpleUrlHandlerMapping이 URL 패턴(/test/*.do)을 분석하여 userController로 요청 전달
+		3. PropertiesMethodNameResolver가 /test/login.do -> login() 으로 매핑
+		4. UserController의 login() 메서드 실행
+		5. ModelAndView 객체를 통해 View(JSP) 반환
+	 -->
 </beans:beans>
 
 
