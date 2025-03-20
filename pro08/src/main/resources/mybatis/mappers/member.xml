@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.member">
+	<resultMap type="memberDTO" id="memResult">
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="joinDate" column="joinDate" />
+	</resultMap>
+	<resultMap type="java.util.HashMap" id="memMap">
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="joinDate" column="joinDate" />
+	</resultMap>
+	
+	
+	<select id="selectAllMemberList" resultMap="memResult">
+		<![CDATA[
+			select * from member order by joinDate desc
+		]]>
+	</select>
+	<select id="selectId" resultType="String">
+		select * from member where id='hong'
+	</select>
+	<select id="selectCount" resultType="Integer">
+		select count(*) from member
+	</select>
+	<select id="selectMember" resultType="memberDTO">
+		select * from member where id='hong'
+	</select>
+	<select id="selectAllMemberMap" resultMap="memMap">
+		select * from member order by joinDate desc
+	</select>
+	<select id="selectMemberById" parameterType="String" 
+			resultType="memberDTO">
+		select * from member where id=#{id}
+	</select>
+	<select id="selectMemberByPwd" parameterType="String"
+			resultMap="memResult">
+		select * from member where pwd=#{pwd}		
+	</select>
+</mapper>
+
+
+
+
+
