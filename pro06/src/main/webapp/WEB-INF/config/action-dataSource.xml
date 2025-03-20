@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!--
+		1. Spring에서 데이터베이스 연결(DataSource)을 설정하는 파일
+		2. Spring의 DI(의존성 주입) 기능을 활용하여 DB 연결 정보(jdbc.properties)를 읽고
+			dataSource를 생성한 후 memberDAO에 주입하는 구조 
+	-->
+	
+	<!-- 
+		1. PropertyPlaceholderConfigurer => DB 연결 정보 로드
+		2. jdbc.properties 파일에서 DB 접속 정보를 불러와서 변수처럼 사용할 수 있도록 설정
+		3. 즉, 아래 dataSource 빈에서 ${jdbc.driverClassName} 같은 값이 실제 프로퍼티 파일의 값으로 치환됨
+	 -->
+	 
+	<bean id="propertyConfigure"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/config/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 
+		1. DB 연결 설정
+		2. SimpleDriverDataSource를 사용하여 DB 연결을 담당하는 dataSource 객체를 생성
+		3. PropertyPlaceholderConfigurer를 통해 ${}로 감싼 값이 실제 jdbc.properties 값으로 치환됨
+		4. dataSource 빈을 생성한 이유는 DB 연결에 필요한 객체 => DAO에서 사용됨
+	 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />		
+	</bean>
+	
+	<!-- 
+		1. DAO(Data Access Object) 설정
+		2. MemberDAOImpl 클래스의 dataSource 필드에 위에서 생성한 dataSource 객체를 주입
+		3. DAO에서 DB와 연결하여 SQL을 실행할 수 있도록 지원
+	 -->
+	<bean id="memberDAO" class="com.test.pro06.member.dao.MemberDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+</beans>
+ 

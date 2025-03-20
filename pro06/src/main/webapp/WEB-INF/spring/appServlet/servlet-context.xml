@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<annotation-driven />
+	
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="com.test.pro06" />
+	
+	<!-- 1. memberController 빈 객체 생성 (MemberControllerImpl 컨트롤러 등록) -->
+	<beans:bean id="memberController"
+		class="com.test.pro06.member.controller.MemberControllerImpl">
+		<!-- 2. methodResolver라는 Bean을 사용하여 요청 URL과 컨트롤러 메서드를 매핑 -->
+		<beans:property name="methodNameResolver" ref="methodResolver" />
+		<!-- 3. 서비스 객체(memberService)를 주입하여 비즈니스 로직을 처리 -->
+		<beans:property name="memberService" ref="memberService" />
+	</beans:bean>
+	
+	<!-- 1. PropertiesMethodNameResolver는 요청 URL을 컨트롤러의 메서드와 연결하는 역할 -->
+	<beans:bean id="methodResolver" 
+		class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<beans:property name="mappings">
+			<beans:props>
+				<!-- 2. "/member/listMembers.do" 요청 => MemberControllerImpl의 listMembers() 메서드 실행 -->
+				<beans:prop key="/member/listMembers.do">listMembers</beans:prop>
+				<beans:prop key="/member/addMember.do">addMember</beans:prop>
+				<beans:prop key="/member/memberForm.do">memberForm</beans:prop>
+				<beans:prop key="/member/memberDetail.do">memberDetail</beans:prop>
+				<beans:prop key="/member/loginForm.do">loginForm</beans:prop>
+				<beans:prop key="/member/login.do">login</beans:prop>
+				<beans:prop key="/member/del.do">del</beans:prop>
+				<beans:prop key="/member/delForm.do">delForm</beans:prop>
+				<beans:prop key="/member/modify.do">modify</beans:prop>
+				<beans:prop key="/member/modifyForm.do">modifyForm</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- 1. SimpleUrlHandlerMapping은 요청 URL과 해당 요청을 처리할 컨트롤러(Handler)를 매핑하는 역할 -->
+	<beans:bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<beans:property name="mappings">
+			<beans:props>
+				<!-- 
+					2. 특정 패턴의 URL 요청을 memberController에 연결 
+					"/member/*.do" 형식의 모든 요청을 memberController가 처리하도록 지정
+				-->
+				<beans:prop key="/member/*.do">memberController</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+	
+</beans:beans>
