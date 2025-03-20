@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/*.xml</param-value>
+	</context-param>
+	
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Processes application requests -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 
+		필터(Filter) 설정
+	 	1. 이 필터는 요청(request)과 응답(response)의 문자 인코딩을 UTF-8로 강제 설정하는 역할을 함
+	 -->
+	 
+	 <!-- 2. 필터의 이름을 encodingFilter로 지정 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<!-- 
+			3. 스프링에서 제공하는 문자 인코딩 처리용 필터 클래스
+			4. 이 클래스가 한글 깨짐 방지를 도와줌
+		 -->
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<!-- 
+			5. 필터가 적용할 인코딩 방식 지정 -> UTF-8 
+			6. POST 요청에서 한글이 깨지지 않게 하는 핵심
+		-->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<!-- 
+			7. true로 설정하면 요청(Request), 응답(Response) 둘 다 무조건 UTF-8로 적용
+		 	8. 클라이언트가 다른 인코딩으로 보내도 서버가 강제로 UTF-8로 변환해서 처리
+		 -->
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<!-- 
+		9. /* 로 모든 URL에 필터 적용
+		10. 프로젝트 내 모든 요청과 응답에 UTF-8 인코딩 필터를 거치게 함
+	 -->
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
+
+
+
