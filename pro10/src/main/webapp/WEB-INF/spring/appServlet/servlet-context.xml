@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="com.test.pro10" />
+	
+	<!-- 
+		Spring에서 파일 업로드를 처리하기 위해 설정하는 Bean
+		CommonsMultipartResolver를 사용하여	파일 업로드 설정을 지정하는 내용
+		이 설정을 통해 업로드 가능한 최대 파일 크기, 메모리에 저장할 수 있는 최대 크기, 파일 이름의 인코딩 방식 등을 지정할 수 있음
+		
+		id="multipartResolver"
+		1. multipartResolver 라는 ID를 가진 Bean을 등록
+		2. Spring 에서 파일 업로드 요청을 처리할 때 이 Bean을 자동으로 찾아서 사용
+		
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		1. Apache Commons FileUpload 기반의 파일 업로드 기능을 제공하는 Spring의 기본 파일 업로드 처리기
+		2. Spring MVC에서 multipart/form-data 요청을 처리할 때 사용
+		
+		name="maxUploadSize" value="52428800" (50MB)
+		1. 업로드할 수 있는 최대 파일 크기를 설정
+		2. 1MB = 1024 * 1024 = 1,048,576 bytes
+		3. 50MB = 50 * 1024 * 1024 = 52,428,800 bytes
+		4. 즉, 50MB까지 업로드 가능
+		
+		name="maxInMemorySize" value="1000000"  (약 1MB)
+		1. 파일 업로드 시, 메모리에 저장할 수 있는 최대 크기를 설정
+		2. maxInMemorySize보다 큰 파일은 디스크에 저장됨
+		3. 1,000,000 bytes ~ 976KB (약 1MB)
+		
+		name="defaultEncoding" value="UTF-8"
+		1. 업로드된 파일의 이름과 데이터 인코딩을 UTF-8로 지정
+		2. 한글 파일명이나 특수 문자 포함된 파일명을 올릴 때 깨지지 않도록 설정
+		
+		Spring MVC 환경에서 파일 업로드를 활성화하려면 Bean으로 등록해야 함
+		DispatcherServlet 이 멀티파트 요청(multipart/form-data)을 감지하면, 이 Bean을 사용하여 요청을 처리
+	 -->
+	 
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="52428800" />
+		<beans:property name="maxInMemorySize" value="1000000" />
+		<beans:property name="defaultEncoding" value="UTF-8" />
+	</beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/test08/*.do"/>
+			<mapping path="/*/*.do"/>
+			<beans:bean class="com.test.pro10.ex08.LocaleInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/*/*.do"/>
+			<beans:bean class="com.test.pro10.common.ViewNameInterceptor" />
+		</interceptor>
+	</interceptors>
+	
+</beans:beans>

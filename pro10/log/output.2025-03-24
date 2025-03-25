@@ -1,0 +1,351 @@
+[17:38:05][INFO ](ContextLoader.java:273)-Root WebApplicationContext: initialization started
+[17:38:05][INFO ](AbstractApplicationContext.java:495)-Refreshing Root WebApplicationContext: startup date [Mon Mar 24 17:38:05 KST 2025]; root of context hierarchy
+[17:38:05][INFO ](XmlBeanDefinitionReader.java:315)-Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/root-context.xml]
+[17:38:06][DEBUG](UiApplicationContextUtils.java:85)-Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@66e341e9]
+[17:38:06][INFO ](DefaultListableBeanFactory.java:557)-Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@55877274: defining beans []; root of factory hierarchy
+[17:38:06][INFO ](ContextLoader.java:302)-Root WebApplicationContext: initialization completed in 809 ms
+[17:38:06][INFO ](FrameworkServlet.java:444)-FrameworkServlet 'appServlet': initialization started
+[17:38:06][INFO ](AbstractApplicationContext.java:495)-Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon Mar 24 17:38:06 KST 2025]; parent: Root WebApplicationContext
+[17:38:06][INFO ](XmlBeanDefinitionReader.java:315)-Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[17:38:06][INFO ](ClassPathScanningCandidateComponentProvider.java:202)-JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+[17:38:06][INFO ](ClassPathScanningCandidateComponentProvider.java:210)-JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+[17:38:06][INFO ](AutowiredAnnotationBeanPostProcessor.java:139)-JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[17:38:06][DEBUG](UiApplicationContextUtils.java:85)-Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.DelegatingThemeSource@587f4f63]
+[17:38:06][INFO ](DefaultListableBeanFactory.java:557)-Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@26fadd98: defining beans [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,logAdvice,ex01Controller,testController,testDAO,testService,homeController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0,org.springframework.aop.config.internalAutoProxyCreator]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@55877274
+[17:38:06][DEBUG](ReflectiveAspectJAdvisorFactory.java:172)-Found AspectJ method: public java.lang.Object com.test.pro10.common.LogAdvice.timeLog(org.aspectj.lang.ProceedingJoinPoint) throws java.lang.Throwable
+[17:38:06][DEBUG](ReflectiveAspectJAdvisorFactory.java:172)-Found AspectJ method: public void com.test.pro10.common.LogAdvice.startLog(org.aspectj.lang.JoinPoint)
+[17:38:06][DEBUG](ReflectiveAspectJAdvisorFactory.java:172)-Found AspectJ method: public void com.test.pro10.common.LogAdvice.endLog(org.aspectj.lang.JoinPoint)
+[17:38:07][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/test01/logTest1.do],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.ex01.Ex01Controller.logTest1(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[17:38:07][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/test02/logTest2.do],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.ex02.TestController.logTest2()
+[17:38:07][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[17:38:07][INFO ](AbstractUrlHandlerMapping.java:314)-Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[17:38:07][DEBUG](AbstractAutoProxyCreator.java:537)-Creating implicit proxy for bean 'testDAO' with 0 common interceptors and 4 specific interceptors
+[17:38:07][DEBUG](Cglib2AopProxy.java:151)-Creating CGLIB2 proxy: target source is SingletonTargetSource for target object [com.test.pro10.ex02.TestDAO@79cdf2d4]
+[17:38:07][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public void com.test.pro10.ex02.TestDAO.logTest2()
+[17:38:07][DEBUG](Cglib2AopProxy.java:750)-Found finalize() method - using NO_OVERRIDE
+[17:38:07][DEBUG](Cglib2AopProxy.java:762)-Found 'equals' method: public boolean java.lang.Object.equals(java.lang.Object)
+[17:38:07][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public java.lang.String java.lang.Object.toString()
+[17:38:07][DEBUG](Cglib2AopProxy.java:767)-Found 'hashCode' method: public native int java.lang.Object.hashCode()
+[17:38:07][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: protected native java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.springframework.aop.Advisor)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.aopalliance.aop.Advice)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isFrozen()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(int,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setTargetSource(org.springframework.aop.TargetSource)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.TargetSource org.springframework.aop.framework.Advised.getTargetSource()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isProxyTargetClass()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setPreFiltered(boolean)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isExposeProxy()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setExposeProxy(boolean)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.Advisor[] org.springframework.aop.framework.Advised.getAdvisors()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.removeAdvisor(int) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvisor(org.springframework.aop.Advisor)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(int,org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isPreFiltered()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isInterfaceProxied(java.lang.Class)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvice(org.aopalliance.aop.Advice)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.replaceAdvisor(org.springframework.aop.Advisor,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class[] org.springframework.aop.framework.Advised.getProxiedInterfaces()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.String org.springframework.aop.framework.Advised.toProxyConfigString()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class org.springframework.aop.TargetClassAware.getTargetClass()
+[17:38:07][DEBUG](AbstractAutoProxyCreator.java:537)-Creating implicit proxy for bean 'testService' with 0 common interceptors and 4 specific interceptors
+[17:38:07][DEBUG](Cglib2AopProxy.java:151)-Creating CGLIB2 proxy: target source is SingletonTargetSource for target object [com.test.pro10.ex02.TestService@10d98940]
+[17:38:07][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public void com.test.pro10.ex02.TestService.logTest2()
+[17:38:07][DEBUG](Cglib2AopProxy.java:750)-Found finalize() method - using NO_OVERRIDE
+[17:38:07][DEBUG](Cglib2AopProxy.java:762)-Found 'equals' method: public boolean java.lang.Object.equals(java.lang.Object)
+[17:38:07][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public java.lang.String java.lang.Object.toString()
+[17:38:07][DEBUG](Cglib2AopProxy.java:767)-Found 'hashCode' method: public native int java.lang.Object.hashCode()
+[17:38:07][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: protected native java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.springframework.aop.Advisor)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.aopalliance.aop.Advice)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isFrozen()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(int,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setTargetSource(org.springframework.aop.TargetSource)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.TargetSource org.springframework.aop.framework.Advised.getTargetSource()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isProxyTargetClass()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setPreFiltered(boolean)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isExposeProxy()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setExposeProxy(boolean)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.Advisor[] org.springframework.aop.framework.Advised.getAdvisors()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.removeAdvisor(int) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvisor(org.springframework.aop.Advisor)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(int,org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isPreFiltered()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isInterfaceProxied(java.lang.Class)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvice(org.aopalliance.aop.Advice)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.replaceAdvisor(org.springframework.aop.Advisor,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class[] org.springframework.aop.framework.Advised.getProxiedInterfaces()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.String org.springframework.aop.framework.Advised.toProxyConfigString()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class org.springframework.aop.TargetClassAware.getTargetClass()
+[17:38:07][DEBUG](AbstractAutoProxyCreator.java:537)-Creating implicit proxy for bean 'testController' with 0 common interceptors and 4 specific interceptors
+[17:38:07][DEBUG](Cglib2AopProxy.java:151)-Creating CGLIB2 proxy: target source is SingletonTargetSource for target object [com.test.pro10.ex02.TestController@2a631049]
+[17:38:07][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public java.lang.String com.test.pro10.ex02.TestController.logTest2()
+[17:38:07][DEBUG](Cglib2AopProxy.java:750)-Found finalize() method - using NO_OVERRIDE
+[17:38:07][DEBUG](Cglib2AopProxy.java:762)-Found 'equals' method: public boolean java.lang.Object.equals(java.lang.Object)
+[17:38:07][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public java.lang.String java.lang.Object.toString()
+[17:38:07][DEBUG](Cglib2AopProxy.java:767)-Found 'hashCode' method: public native int java.lang.Object.hashCode()
+[17:38:07][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: protected native java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.springframework.aop.Advisor)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.aopalliance.aop.Advice)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isFrozen()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(int,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setTargetSource(org.springframework.aop.TargetSource)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.TargetSource org.springframework.aop.framework.Advised.getTargetSource()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isProxyTargetClass()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setPreFiltered(boolean)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isExposeProxy()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setExposeProxy(boolean)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.Advisor[] org.springframework.aop.framework.Advised.getAdvisors()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.removeAdvisor(int) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvisor(org.springframework.aop.Advisor)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(int,org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isPreFiltered()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isInterfaceProxied(java.lang.Class)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvice(org.aopalliance.aop.Advice)
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.replaceAdvisor(org.springframework.aop.Advisor,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class[] org.springframework.aop.framework.Advised.getProxiedInterfaces()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.String org.springframework.aop.framework.Advised.toProxyConfigString()
+[17:38:07][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class org.springframework.aop.TargetClassAware.getTargetClass()
+[17:38:07][INFO ](FrameworkServlet.java:463)-FrameworkServlet 'appServlet': initialization completed in 1358 ms
+[17:38:12][INFO ](LogAdvice.java:47)-==== Around Before ====
+[17:38:12][INFO ](LogAdvice.java:48)-1: []
+[17:38:12][INFO ](LogAdvice.java:22)-==== Before ====
+[17:38:12][INFO ](LogAdvice.java:23)-1: []
+[17:38:12][INFO ](LogAdvice.java:24)-2: method-execution
+[17:38:12][INFO ](LogAdvice.java:25)-3: logTest2
+[17:38:12][INFO ](LogAdvice.java:26)-4: com.test.pro10.ex02.TestController@2a631049
+[17:38:12][INFO ](LogAdvice.java:27)-5: com.test.pro10.ex02.TestController@2a631049
+[17:38:12][INFO ](LogAdvice.java:28)-
+[17:38:12][INFO ](LogAdvice.java:47)-==== Around Before ====
+[17:38:12][INFO ](LogAdvice.java:48)-1: []
+[17:38:12][INFO ](LogAdvice.java:22)-==== Before ====
+[17:38:12][INFO ](LogAdvice.java:23)-1: []
+[17:38:12][INFO ](LogAdvice.java:24)-2: method-execution
+[17:38:12][INFO ](LogAdvice.java:25)-3: logTest2
+[17:38:12][INFO ](LogAdvice.java:26)-4: com.test.pro10.ex02.TestService@10d98940
+[17:38:12][INFO ](LogAdvice.java:27)-5: com.test.pro10.ex02.TestService@10d98940
+[17:38:12][INFO ](LogAdvice.java:28)-
+[17:38:12][INFO ](LogAdvice.java:47)-==== Around Before ====
+[17:38:12][INFO ](LogAdvice.java:48)-1: []
+[17:38:12][INFO ](LogAdvice.java:22)-==== Before ====
+[17:38:12][INFO ](LogAdvice.java:23)-1: []
+[17:38:12][INFO ](LogAdvice.java:24)-2: method-execution
+[17:38:12][INFO ](LogAdvice.java:25)-3: logTest2
+[17:38:12][INFO ](LogAdvice.java:26)-4: com.test.pro10.ex02.TestDAO@79cdf2d4
+[17:38:12][INFO ](LogAdvice.java:27)-5: com.test.pro10.ex02.TestDAO@79cdf2d4
+[17:38:12][INFO ](LogAdvice.java:28)-
+[17:38:12][INFO ](LogAdvice.java:52)-2: logTest2
+[17:38:12][INFO ](LogAdvice.java:54)-==== Around After ====
+[17:38:12][INFO ](LogAdvice.java:56)-동작시간 : 7ms
+[17:38:12][INFO ](LogAdvice.java:34)-==== After ====
+[17:38:12][INFO ](LogAdvice.java:35)-1: []
+[17:38:12][INFO ](LogAdvice.java:36)-2: method-execution
+[17:38:12][INFO ](LogAdvice.java:37)-3: logTest2
+[17:38:12][INFO ](LogAdvice.java:38)-4: com.test.pro10.ex02.TestDAO@79cdf2d4
+[17:38:12][INFO ](LogAdvice.java:39)-5: com.test.pro10.ex02.TestDAO@79cdf2d4
+[17:38:12][INFO ](LogAdvice.java:40)-
+[17:38:12][INFO ](LogAdvice.java:52)-2: logTest2
+[17:38:12][INFO ](LogAdvice.java:54)-==== Around After ====
+[17:38:12][INFO ](LogAdvice.java:56)-동작시간 : 17ms
+[17:38:12][INFO ](LogAdvice.java:34)-==== After ====
+[17:38:12][INFO ](LogAdvice.java:35)-1: []
+[17:38:12][INFO ](LogAdvice.java:36)-2: method-execution
+[17:38:12][INFO ](LogAdvice.java:37)-3: logTest2
+[17:38:12][INFO ](LogAdvice.java:38)-4: com.test.pro10.ex02.TestService@10d98940
+[17:38:12][INFO ](LogAdvice.java:39)-5: com.test.pro10.ex02.TestService@10d98940
+[17:38:12][INFO ](LogAdvice.java:40)-
+[17:38:12][INFO ](LogAdvice.java:52)-2: logTest2
+[17:38:12][INFO ](LogAdvice.java:54)-==== Around After ====
+[17:38:12][INFO ](LogAdvice.java:56)-동작시간 : 44ms
+[17:38:12][INFO ](LogAdvice.java:34)-==== After ====
+[17:38:12][INFO ](LogAdvice.java:35)-1: []
+[17:38:12][INFO ](LogAdvice.java:36)-2: method-execution
+[17:38:12][INFO ](LogAdvice.java:37)-3: logTest2
+[17:38:12][INFO ](LogAdvice.java:38)-4: com.test.pro10.ex02.TestController@2a631049
+[17:38:12][INFO ](LogAdvice.java:39)-5: com.test.pro10.ex02.TestController@2a631049
+[17:38:12][INFO ](LogAdvice.java:40)-
+[17:42:15][INFO ](AbstractApplicationContext.java:1020)-Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon Mar 24 17:38:06 KST 2025]; parent: Root WebApplicationContext
+[17:42:15][INFO ](DefaultSingletonBeanRegistry.java:433)-Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@26fadd98: defining beans [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,logAdvice,ex01Controller,testController,testDAO,testService,homeController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0,org.springframework.aop.config.internalAutoProxyCreator]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@55877274
+[17:42:15][INFO ](AbstractApplicationContext.java:1020)-Closing Root WebApplicationContext: startup date [Mon Mar 24 17:38:05 KST 2025]; root of context hierarchy
+[17:42:15][INFO ](DefaultSingletonBeanRegistry.java:433)-Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@55877274: defining beans []; root of factory hierarchy
+[17:42:16][INFO ](ContextLoader.java:273)-Root WebApplicationContext: initialization started
+[17:42:16][INFO ](AbstractApplicationContext.java:495)-Refreshing Root WebApplicationContext: startup date [Mon Mar 24 17:42:16 KST 2025]; root of context hierarchy
+[17:42:16][INFO ](XmlBeanDefinitionReader.java:315)-Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/root-context.xml]
+[17:42:16][DEBUG](UiApplicationContextUtils.java:85)-Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@21d44af4]
+[17:42:16][INFO ](DefaultListableBeanFactory.java:557)-Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@41d89dc5: defining beans []; root of factory hierarchy
+[17:42:16][INFO ](ContextLoader.java:302)-Root WebApplicationContext: initialization completed in 322 ms
+[17:42:16][INFO ](FrameworkServlet.java:444)-FrameworkServlet 'appServlet': initialization started
+[17:42:16][INFO ](AbstractApplicationContext.java:495)-Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon Mar 24 17:42:16 KST 2025]; parent: Root WebApplicationContext
+[17:42:16][INFO ](XmlBeanDefinitionReader.java:315)-Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[17:42:16][INFO ](ClassPathScanningCandidateComponentProvider.java:202)-JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+[17:42:16][INFO ](ClassPathScanningCandidateComponentProvider.java:210)-JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+[17:42:16][INFO ](AutowiredAnnotationBeanPostProcessor.java:139)-JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[17:42:16][DEBUG](UiApplicationContextUtils.java:85)-Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.DelegatingThemeSource@202762a3]
+[17:42:16][INFO ](DefaultListableBeanFactory.java:557)-Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5e454845: defining beans [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,logAdvice,ex01Controller,testController,testDAO,testService,homeController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0,org.springframework.aop.config.internalAutoProxyCreator]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@41d89dc5
+[17:42:16][DEBUG](ReflectiveAspectJAdvisorFactory.java:172)-Found AspectJ method: public java.lang.Object com.test.pro10.common.LogAdvice.timeLog(org.aspectj.lang.ProceedingJoinPoint) throws java.lang.Throwable
+[17:42:16][DEBUG](ReflectiveAspectJAdvisorFactory.java:172)-Found AspectJ method: public void com.test.pro10.common.LogAdvice.startLog(org.aspectj.lang.JoinPoint)
+[17:42:16][DEBUG](ReflectiveAspectJAdvisorFactory.java:172)-Found AspectJ method: public void com.test.pro10.common.LogAdvice.endLog(org.aspectj.lang.JoinPoint)
+[17:42:17][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/test01/logTest1.do],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.ex01.Ex01Controller.logTest1(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[17:42:17][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/test02/logTest2.do],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.ex02.TestController.logTest2()
+[17:42:17][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[17:42:17][INFO ](AbstractUrlHandlerMapping.java:314)-Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[17:42:17][DEBUG](AbstractAutoProxyCreator.java:537)-Creating implicit proxy for bean 'testDAO' with 0 common interceptors and 4 specific interceptors
+[17:42:17][DEBUG](Cglib2AopProxy.java:151)-Creating CGLIB2 proxy: target source is SingletonTargetSource for target object [com.test.pro10.ex02.TestDAO@60fff4]
+[17:42:17][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public void com.test.pro10.ex02.TestDAO.logTest2()
+[17:42:17][DEBUG](Cglib2AopProxy.java:750)-Found finalize() method - using NO_OVERRIDE
+[17:42:17][DEBUG](Cglib2AopProxy.java:762)-Found 'equals' method: public boolean java.lang.Object.equals(java.lang.Object)
+[17:42:17][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public java.lang.String java.lang.Object.toString()
+[17:42:17][DEBUG](Cglib2AopProxy.java:767)-Found 'hashCode' method: public native int java.lang.Object.hashCode()
+[17:42:17][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: protected native java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.springframework.aop.Advisor)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.aopalliance.aop.Advice)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isFrozen()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(int,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setTargetSource(org.springframework.aop.TargetSource)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.TargetSource org.springframework.aop.framework.Advised.getTargetSource()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isProxyTargetClass()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setPreFiltered(boolean)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isExposeProxy()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setExposeProxy(boolean)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.Advisor[] org.springframework.aop.framework.Advised.getAdvisors()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.removeAdvisor(int) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvisor(org.springframework.aop.Advisor)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(int,org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isPreFiltered()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isInterfaceProxied(java.lang.Class)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvice(org.aopalliance.aop.Advice)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.replaceAdvisor(org.springframework.aop.Advisor,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class[] org.springframework.aop.framework.Advised.getProxiedInterfaces()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.String org.springframework.aop.framework.Advised.toProxyConfigString()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class org.springframework.aop.TargetClassAware.getTargetClass()
+[17:42:17][DEBUG](AbstractAutoProxyCreator.java:537)-Creating implicit proxy for bean 'testService' with 0 common interceptors and 4 specific interceptors
+[17:42:17][DEBUG](Cglib2AopProxy.java:151)-Creating CGLIB2 proxy: target source is SingletonTargetSource for target object [com.test.pro10.ex02.TestService@2ce11af5]
+[17:42:17][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public void com.test.pro10.ex02.TestService.logTest2()
+[17:42:17][DEBUG](Cglib2AopProxy.java:750)-Found finalize() method - using NO_OVERRIDE
+[17:42:17][DEBUG](Cglib2AopProxy.java:762)-Found 'equals' method: public boolean java.lang.Object.equals(java.lang.Object)
+[17:42:17][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public java.lang.String java.lang.Object.toString()
+[17:42:17][DEBUG](Cglib2AopProxy.java:767)-Found 'hashCode' method: public native int java.lang.Object.hashCode()
+[17:42:17][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: protected native java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.springframework.aop.Advisor)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.aopalliance.aop.Advice)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isFrozen()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(int,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setTargetSource(org.springframework.aop.TargetSource)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.TargetSource org.springframework.aop.framework.Advised.getTargetSource()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isProxyTargetClass()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setPreFiltered(boolean)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isExposeProxy()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setExposeProxy(boolean)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.Advisor[] org.springframework.aop.framework.Advised.getAdvisors()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.removeAdvisor(int) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvisor(org.springframework.aop.Advisor)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(int,org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isPreFiltered()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isInterfaceProxied(java.lang.Class)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvice(org.aopalliance.aop.Advice)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.replaceAdvisor(org.springframework.aop.Advisor,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class[] org.springframework.aop.framework.Advised.getProxiedInterfaces()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.String org.springframework.aop.framework.Advised.toProxyConfigString()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class org.springframework.aop.TargetClassAware.getTargetClass()
+[17:42:17][DEBUG](AbstractAutoProxyCreator.java:537)-Creating implicit proxy for bean 'testController' with 0 common interceptors and 4 specific interceptors
+[17:42:17][DEBUG](Cglib2AopProxy.java:151)-Creating CGLIB2 proxy: target source is SingletonTargetSource for target object [com.test.pro10.ex02.TestController@32cdd782]
+[17:42:17][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public java.lang.String com.test.pro10.ex02.TestController.logTest2()
+[17:42:17][DEBUG](Cglib2AopProxy.java:750)-Found finalize() method - using NO_OVERRIDE
+[17:42:17][DEBUG](Cglib2AopProxy.java:762)-Found 'equals' method: public boolean java.lang.Object.equals(java.lang.Object)
+[17:42:17][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: public java.lang.String java.lang.Object.toString()
+[17:42:17][DEBUG](Cglib2AopProxy.java:767)-Found 'hashCode' method: public native int java.lang.Object.hashCode()
+[17:42:17][DEBUG](Cglib2AopProxy.java:799)-Unable to apply any optimisations to advised method: protected native java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.springframework.aop.Advisor)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.aopalliance.aop.Advice)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isFrozen()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(int,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setTargetSource(org.springframework.aop.TargetSource)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.TargetSource org.springframework.aop.framework.Advised.getTargetSource()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isProxyTargetClass()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setPreFiltered(boolean)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isExposeProxy()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setExposeProxy(boolean)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract org.springframework.aop.Advisor[] org.springframework.aop.framework.Advised.getAdvisors()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.removeAdvisor(int) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvisor(org.springframework.aop.Advisor)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(int,org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isPreFiltered()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isInterfaceProxied(java.lang.Class)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvice(org.aopalliance.aop.Advice)
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.replaceAdvisor(org.springframework.aop.Advisor,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class[] org.springframework.aop.framework.Advised.getProxiedInterfaces()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.String org.springframework.aop.framework.Advised.toProxyConfigString()
+[17:42:17][DEBUG](Cglib2AopProxy.java:756)-Method is declared on Advised interface: public abstract java.lang.Class org.springframework.aop.TargetClassAware.getTargetClass()
+[17:42:17][INFO ](FrameworkServlet.java:463)-FrameworkServlet 'appServlet': initialization completed in 1188 ms
+[18:11:46][INFO ](ContextLoader.java:273)-Root WebApplicationContext: initialization started
+[18:11:46][INFO ](AbstractApplicationContext.java:495)-Refreshing Root WebApplicationContext: startup date [Mon Mar 24 18:11:46 KST 2025]; root of context hierarchy
+[18:11:46][INFO ](XmlBeanDefinitionReader.java:315)-Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/root-context.xml]
+[18:11:47][INFO ](DefaultListableBeanFactory.java:557)-Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@55877274: defining beans []; root of factory hierarchy
+[18:11:47][INFO ](ContextLoader.java:302)-Root WebApplicationContext: initialization completed in 734 ms
+[18:11:47][INFO ](FrameworkServlet.java:444)-FrameworkServlet 'appServlet': initialization started
+[18:11:47][INFO ](AbstractApplicationContext.java:495)-Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon Mar 24 18:11:47 KST 2025]; parent: Root WebApplicationContext
+[18:11:47][INFO ](XmlBeanDefinitionReader.java:315)-Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[18:11:47][INFO ](ClassPathScanningCandidateComponentProvider.java:202)-JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+[18:11:47][INFO ](ClassPathScanningCandidateComponentProvider.java:210)-JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+[18:11:47][INFO ](AutowiredAnnotationBeanPostProcessor.java:139)-JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[18:11:47][INFO ](DefaultListableBeanFactory.java:557)-Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@722531ab: defining beans [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,logAdvice,ex01Controller,testController,testDAO,testService,homeController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0,org.springframework.aop.config.internalAutoProxyCreator]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@55877274
+[18:11:48][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/test01/logTest1.do],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.ex01.Ex01Controller.logTest1(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[18:11:48][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/test02/logTest2.do],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.ex02.TestController.logTest2()
+[18:11:48][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[18:11:48][INFO ](AbstractUrlHandlerMapping.java:314)-Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[18:11:48][INFO ](FrameworkServlet.java:463)-FrameworkServlet 'appServlet': initialization completed in 1377 ms
+[18:12:09][INFO ](Ex01Controller.java:20)-info 레벨: logTest1 메서드 = GET
+[18:40:48][INFO ](AbstractApplicationContext.java:1020)-Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon Mar 24 18:11:47 KST 2025]; parent: Root WebApplicationContext
+[18:40:48][INFO ](DefaultSingletonBeanRegistry.java:433)-Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@722531ab: defining beans [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,logAdvice,ex01Controller,testController,testDAO,testService,homeController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0,org.springframework.aop.config.internalAutoProxyCreator]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@55877274
+[18:40:48][INFO ](AbstractApplicationContext.java:1020)-Closing Root WebApplicationContext: startup date [Mon Mar 24 18:11:46 KST 2025]; root of context hierarchy
+[18:40:48][INFO ](DefaultSingletonBeanRegistry.java:433)-Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@55877274: defining beans []; root of factory hierarchy
+[18:40:48][INFO ](ContextLoader.java:273)-Root WebApplicationContext: initialization started
+[18:40:48][INFO ](AbstractApplicationContext.java:495)-Refreshing Root WebApplicationContext: startup date [Mon Mar 24 18:40:48 KST 2025]; root of context hierarchy
+[18:40:49][INFO ](XmlBeanDefinitionReader.java:315)-Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/root-context.xml]
+[18:40:49][INFO ](DefaultListableBeanFactory.java:557)-Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7bab2315: defining beans []; root of factory hierarchy
+[18:40:49][INFO ](ContextLoader.java:302)-Root WebApplicationContext: initialization completed in 297 ms
+[18:40:49][INFO ](FrameworkServlet.java:444)-FrameworkServlet 'appServlet': initialization started
+[18:40:49][INFO ](AbstractApplicationContext.java:495)-Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon Mar 24 18:40:49 KST 2025]; parent: Root WebApplicationContext
+[18:40:49][INFO ](XmlBeanDefinitionReader.java:315)-Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[18:40:49][INFO ](ClassPathScanningCandidateComponentProvider.java:202)-JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+[18:40:49][INFO ](ClassPathScanningCandidateComponentProvider.java:210)-JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+[18:40:49][INFO ](AutowiredAnnotationBeanPostProcessor.java:139)-JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[18:40:49][INFO ](DefaultListableBeanFactory.java:557)-Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7cf8e576: defining beans [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,logAdvice,ex01Controller,testController,testDAO,testService,homeController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0,org.springframework.aop.config.internalAutoProxyCreator]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@7bab2315
+[18:40:49][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/test01/logTest1.do],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.ex01.Ex01Controller.logTest1(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[18:40:49][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/test02/logTest2.do],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.ex02.TestController.logTest2()
+[18:40:49][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[18:40:50][INFO ](AbstractUrlHandlerMapping.java:314)-Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[18:40:50][INFO ](FrameworkServlet.java:463)-FrameworkServlet 'appServlet': initialization completed in 1186 ms
+[18:42:16][INFO ](AbstractApplicationContext.java:1020)-Closing WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon Mar 24 18:40:49 KST 2025]; parent: Root WebApplicationContext
+[18:42:16][INFO ](DefaultSingletonBeanRegistry.java:433)-Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7cf8e576: defining beans [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,logAdvice,ex01Controller,testController,testDAO,testService,homeController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0,org.springframework.aop.config.internalAutoProxyCreator]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@7bab2315
+[18:42:16][INFO ](AbstractApplicationContext.java:1020)-Closing Root WebApplicationContext: startup date [Mon Mar 24 18:40:48 KST 2025]; root of context hierarchy
+[18:42:16][INFO ](DefaultSingletonBeanRegistry.java:433)-Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7bab2315: defining beans []; root of factory hierarchy
+[18:42:16][INFO ](ContextLoader.java:273)-Root WebApplicationContext: initialization started
+[18:42:16][INFO ](AbstractApplicationContext.java:495)-Refreshing Root WebApplicationContext: startup date [Mon Mar 24 18:42:16 KST 2025]; root of context hierarchy
+[18:42:17][INFO ](XmlBeanDefinitionReader.java:315)-Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/root-context.xml]
+[18:42:17][INFO ](DefaultListableBeanFactory.java:557)-Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@54ddfeb4: defining beans []; root of factory hierarchy
+[18:42:17][INFO ](ContextLoader.java:302)-Root WebApplicationContext: initialization completed in 280 ms
+[18:42:17][INFO ](FrameworkServlet.java:444)-FrameworkServlet 'appServlet': initialization started
+[18:42:17][INFO ](AbstractApplicationContext.java:495)-Refreshing WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon Mar 24 18:42:17 KST 2025]; parent: Root WebApplicationContext
+[18:42:17][INFO ](XmlBeanDefinitionReader.java:315)-Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/appServlet/servlet-context.xml]
+[18:42:17][INFO ](ClassPathScanningCandidateComponentProvider.java:202)-JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+[18:42:17][INFO ](ClassPathScanningCandidateComponentProvider.java:210)-JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+[18:42:17][INFO ](AutowiredAnnotationBeanPostProcessor.java:139)-JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[18:42:17][INFO ](DefaultListableBeanFactory.java:557)-Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@763a436c: defining beans [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0,org.springframework.web.servlet.handler.SimpleUrlHandlerMapping#0,org.springframework.web.servlet.view.InternalResourceViewResolver#0,logAdvice,ex01Controller,testController,testDAO,testService,homeController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0,org.springframework.aop.config.internalAutoProxyCreator]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@54ddfeb4
+[18:42:17][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/test01/logTest1.do],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.ex01.Ex01Controller.logTest1(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[18:42:17][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/test02/logTest2.do],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.ex02.TestController.logTest2()
+[18:42:17][INFO ](AbstractHandlerMethodMapping.java:190)-Mapped "{[/],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.test.pro10.HomeController.home(java.util.Locale,org.springframework.ui.Model)
+[18:42:18][INFO ](AbstractUrlHandlerMapping.java:314)-Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[18:42:18][INFO ](FrameworkServlet.java:463)-FrameworkServlet 'appServlet': initialization completed in 1232 ms

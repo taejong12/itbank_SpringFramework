@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	
+	<!-- 
+		Appenders
+		1. 로그 기록 대상 정의
+		
+		<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		1. 로그를 콘솔에 출력하는 ConsoleAppender를 정의함
+		2. name="console": 이 Appender의 이름을 "console"로 지정함
+		3. class="org.apache.log4j.ConsoleAppender": 콘솔에 로그를 출력하기 위한 Log4j 클래스
+		
+		<param name="Target" value="System.out" />
+		1. 출력 대상으로 System.out을 설정하여 표준 출력으로 로그가 출력되도록 함
+		
+		<layout class="org.apache.log4j.PatternLayout">
+		1. 로그의 출력 형식을 정의함
+		
+		<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		1. 로그의 형식을 패턴으로 정의함
+		2. %-5p: 로그 레벨(예: DEBUG, INFO)을 5자리로 왼쪽 정렬
+		3. %c: 클래스 이름
+		4. %m: 메시지 내용
+		5. %n: 줄바꿈
+		
+	-->
+	
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- 
+		<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		1. 로그를 매일 새로운 파일에 기록하는 DailyRollingFileAppender를 사용함
+		2. name="dailyFileAppender": 이 Appender의 이름을 "dailyFileAppender"로 지정함
+		3. class="org.apache.log4j.DailyRollingFileAppender": 날짜별로 롤오버되는 파일에 로그를 기록하기 위한 클래스
+		
+		<param name="File" value="C:\\Users\\dbxow\\Desktop\\developtool\\sts-bundle\\itbank_SpringFramework\\pro10\\log\\output" />
+		1. 로그 파일이 저장될 경로를 지정함
+		
+		<param name="Append" value="true" />
+		1. 로그 파일이 존재할 경우 내용을 덧붙여 기록하도록 설정함
+		
+		<layout class="org.apache.log4j.PatternLayout">
+		1. 로그 출력 형식을 지정함
+		
+		<param name="DatePattern" value="','yyyy-MM-dd" />
+		1. 파일 롤오버 시 사용될 날짜 패턴을 정의함 (예: 로그 파일 이름에 ,yyyy-MM-dd가 추가됨)
+		
+		<param name="ConversionPattern" value="[%d{HH:mm:ss}][%-5p](%F:%L)-%m%n" />
+		1. 로그의 형식
+		2. [%d{HH:mm:ss}]: 시간(시:분:초)
+		3. [%-5p]: 로그 레벨
+		4. (%F:%L): 파일 이름과 라인 번호
+		5. - %m: 로그 메시지
+		6. %n: 줄바꿈
+		
+	 -->
+	 
+	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+	    <param name="File" value="C:\\Users\\dbxow\\Desktop\\developtool\\sts-bundle\\itbank_SpringFramework\\pro10\\log\\output" />
+	    <param name="Append" value="true" />
+	    <layout class="org.apache.log4j.PatternLayout">
+			<param name="DatePattern" value="','yyyy-MM-dd" />
+	        <param name="ConversionPattern" value="[%d{HH:mm:ss}][%-5p](%F:%L)-%m%n" />
+	    </layout>
+	</appender>
+	
+	<!-- 
+		Loggers (로그 수준 설정)
+		1. 특정 패키지나 클래스에 대한 로그 설정을 정의함
+		2. name: 로그를 기록할 패키지나 클래스 이름을 지정함
+		3. <level value="info" />: 이 패키지의 로그 레벨을 info로 설정하여, 
+			info, warn, error 레벨의 메시지만 기록되도록합니다.
+	 -->
+	
+	<!-- Application Loggers -->
+	<logger name="com.test.pro10">
+		<level value="info" />
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+
+	<!-- 
+		Root Logger (루트 로거 설정)
+		1. <root>: 루트 로거는 모든 로그의 기본 설정을 정의함
+		2. <priority value="debug" />: 기본 로그 레벨을 debug로 설정하여, 
+			debug, info, warn, error 모든 레벨의 로그가 기록되도록 함
+		3. <appender-ref ref="console" />: 콘솔에 로그를 출력하는 console appender를 참조함
+		4. <appender-ref ref="dailyFileAppender" />: dailyFileAppender를 참조하여 로그를 파일에도 기록하도록 함
+	-->
+	
+	<root>
+		<priority value="info" />
+		<appender-ref ref="console" />
+		<appender-ref ref="dailyFileAppender" />
+	</root>
+	
+</log4j:configuration>
