@@ -3,9 +3,21 @@
 	"-//mybatis.org/DTD Config 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
+<!-- 
+	<typeAliases>란?
+	1. MyBatis에서 typeAlias는 클래스 이름을 짧게 별칭(alias)으로 사용하는 기능
+	2. 매핑 파일(.xml)에서 매번 com.test.pro08.ex01.MemberDTO 이렇게 풀네임 쓰기 번거로움
+		-> memberDTO라는 짧은 이름으로 등록 가능
+		
+	type="com.test.pro08.ex01.MemberDTO" -> 별칭을 부여할 실제 클래스의 풀 패키지 경로
+	alias="memberDTO" -> 이 클래스를 매핑 파일에서 부를 때 사용할 별명
+	
+	이 설정을 해두면 매퍼 XML에서 resultType이나 parameterType에서 사용가능
+	resultType="memberDTO"라고 적어도 MyBatis가 com.test.pro08.ex01.MemberDTO로 인식해줌
+-->
+
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.test.pro08.ex01.MemberDTO"
-			alias="memberDTO" />
+		<typeAlias type="com.test.pro08.ex01.MemberDTO" alias="memberDTO" />
 	</typeAliases>
 </configuration>

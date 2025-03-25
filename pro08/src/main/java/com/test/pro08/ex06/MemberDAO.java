@@ -1,4 +1,4 @@
-package com.test.pro08.ex03;
+package com.test.pro08.ex06;
 
 import java.util.List;
 
@@ -8,14 +8,16 @@ import org.springframework.stereotype.Repository;
 
 import com.test.pro08.ex01.MemberDTO;
 
-@Repository("memberDAO3")
+@Repository("memberDAO6")
 public class MemberDAO {
 	@Autowired
 	SqlSession session;
-	
-	public List<MemberDTO> selectAllMemberMap(){
-		List<MemberDTO> membersList =
-				session.selectList("mapper.member.selectAllMemberMap");
-		return membersList;
+
+	public void updateMember(MemberDTO m) {
+		// TODO Auto-generated method stub
+		int result = 
+			session.update("mapper.member.updateMember", m);
 	}
+	
+	
 }

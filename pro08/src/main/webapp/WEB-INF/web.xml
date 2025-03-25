@@ -29,5 +29,55 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
+	
+	<!-- 
+		Spring에서 한글 깨짐 방지를 위한 문자 인코딩 필터(CharacterEncodingFilter)를 설정하는 코드
+		웹 애플리케이션에서 요청과 응답의 문자 인코딩을 UTF-8로 강제하는 역할
+		
+		filter 태그: 필터 정의
+		1. filter-name: 필터의 이름을 encodingFilter로 설정함
+		2. filter-class: Spring에서 제공하는 CharacterEncodingFilter 클래스를 사용함
+			이 필터는 요청(request)과 응답(response)의 문자 인코딩을 설정하는 역할
+		3. init-param (초기화 매개변수)
+			encoding -> UTF-8로 설정하여 모든 요청과 응답을 UTF-8 인코딩으로 처리함
+			forceEncoding -> true 로 설정하면 요청(request)과 응답(response) 모두 강제적으로 UTF-8로 설정
+			기본적으로 요청(request)은 request.setCharacterEncoding()을 호출해야 UTF-8 로 인코딩됨
+			forceEncoding을 true로 설정하면 모든 요청과 응답을 무조건 UTF-8로 인코딩하므로 한글 깨짐 문제를 방지할 수 있음
+	 -->
+	
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<!-- 
+		filter-mapping 태그: 필터 적용 범위 설정
+		1. filter-name: 위에서 정의한 encodingFilter를 필터로 매핑함
+		2. url-pattern: /* -> 웹 애플리케이션의 모든 요청(전체 URL 패턴)에 대해 필터를 적용함
+		즉, 모든 요청에 대해 UTF-8 인코딩을 강제함
+	 -->
+	 
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 
+		이 설정이 필요한 이유
+		1. 한글 깨짐 방지
+			웹 애플리케이션에서 클라이언트(브라우저)와 서버 간 데이터 송수신 시 한글이 깨질 수 있음
+			이를 방지하기 위해 모든 요청과 응답의 문자 인코딩을 UTF-8로 강제함
+		2. Spring이 제공하는 CharacterEncodingFilter 활용
+			CharacterEncodingFilter는 요청의 문자 인코딩을 자동으로 설정해줌
+			개발자가 직접 request.setCharacterEncoding("UTF-8")을 호출할 필요 없이 필터에서 처리해줌
+	 -->
+	
 </web-app>

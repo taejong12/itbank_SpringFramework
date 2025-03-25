@@ -3,39 +3,63 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="propertyPlaceholderConfigurer"
-	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<!-- 
+		PropertyPlaceholderConfigurer (DB 설정값 읽기)
+		1. jdbc.properties 파일을 불러와서 데이터베이스 설정값(URL, 계정 정보 등)을 프로퍼티로 사용할 수 있도록 함
+		2. 이후 ${jdbc.driverClassName} 같은 방식으로 프로퍼티 값을 XML에서 참조할 수 있음
+	 -->
+	 
+	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<value>/WEB-INF/config/jdbc.properties</value>
 		</property>
 	</bean>
 	
-	<bean id="dataSource" 
-	class="org.apache.ibatis.datasource.pooled.PooledDataSource">
+	<!-- 
+		데이터베이스 연결 (DataSource 설정)
+		1. PooledDataSource는 커넥션 풀(Connection Pool)을 제공하는 MyBatis의 기본 데이터 소스
+		2. ${}를 사용해 jdbc.properties 에서 값을 가져와 DB 연결 정보를 설정
+		3. 커넥션 풀을 사용하면 DB 연결을 효율적으로 관리하여 성능을 개선할 수 있음
+	 -->
+	
+	<bean id="dataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
 		<property name="driver" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 	
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- 
+		SqlSessionFactory 설정
+		1. MyBatis의 sqlSessionFactoryBean을 설정하여 MyBatis가 사용할 수 있도록 함
+		2. dataSource를 연결하여 DB에 접근 가능하도록 설정
+		3. MyBatis 설정 파일(sqlMapConfig.xml)을 지정하여 MyBatis 환경을 설정
+		4. mapperLocations을 통해 Mapper XML 파일들을 자동으로 등록 (mappers/*.xml)
+	 -->
+	 
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation"
-			value="classpath:mybatis/sqlMapConfig.xml" />
-		<property name="mapperLocations"
-			value="classpath:mybatis/mappers/*.xml" />	
+		<property name="configLocation"	value="classpath:mybatis/sqlMapConfig.xml" />
+		<property name="mapperLocations" value="classpath:mybatis/mappers/*.xml" />
 	</bean>
 	
-	<bean id="sqlSession" 
-		class="org.mybatis.spring.SqlSessionTemplate">
+	<!-- 
+		SqlSessionTemplate은 MyBatis의 SqlSession을 스프링 방식으로 관리하는 역할
+		1. sqlSessionFactory를 생성자 매개변수로 받아 설정
+		2. DAO(데이터 접근 객체)에서 이 sqlSession을 주입받아 DB를 사용할 수 있음
+	 -->
+	 
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	
+		<!-- 
+			index="0" 의 의미
+			1. 생성자의 첫 번째(0번째) 매개변수에 해당하는 값을 설정한다는 의미
+			2. org.mybatis.spring.SqlSessionTemplate 클래스의 생성자를 호출할 때 첫 번째(0번째) 인자로 sqlSession 빈을 주입하는 코드
+			3. 생성자의 매개변수 순서를 기준으로 값을 주입함
+			4. 여러 개의 생성자가 있는 경우, 순서를 정확히 맞춰야 함
+		-->
+		
 		<constructor-arg index="0" ref="sqlSessionFactory" />	
 	</bean>
 </beans>
-
-
-
-
-
-
 

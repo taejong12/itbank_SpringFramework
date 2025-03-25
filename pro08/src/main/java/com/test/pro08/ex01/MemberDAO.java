@@ -25,9 +25,4 @@ public class MemberDAO {
 			sqlSession.selectList("mapper.member.selectAllMemberList");
 		return membersList;
 	}
-
 }
-
-
-
-

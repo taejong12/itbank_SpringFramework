@@ -1,4 +1,4 @@
-package com.test.pro08.ex03;
+package com.test.pro08.ex06;
 
 import java.util.List;
 
@@ -7,26 +7,32 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.pro08.ex01.MemberDTO;
 
-@Controller("memberController3")
-@RequestMapping("/test03")
+@Controller("memberController6")
+@RequestMapping("/test06")
 public class MemberController {
 	@Autowired
 	MemberDAO dao;
 	
-	@RequestMapping("/mem1.do")
-	public ModelAndView selectAllMemberMap(
+	@RequestMapping("/modMember.do")
+	public String modMember(HttpServletRequest request,
+			HttpServletResponse response) {
+		return "/test06/modMember";
+	}
+	
+	@RequestMapping("/updateMember.do")
+	public ModelAndView updateMember(
+			@ModelAttribute() MemberDTO m,
 			HttpServletRequest request,
 			HttpServletResponse response) {
-		List<MemberDTO> membersList = 
-				dao.selectAllMemberMap();
+		dao.updateMember(m);
 		ModelAndView mav = 
-				new ModelAndView("test03/listMembers");
-		mav.addObject("membersList", membersList);
+			new ModelAndView("redirect:/test05/listMembers.do");
 		return mav;
 	}
 }

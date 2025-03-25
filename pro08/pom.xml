@@ -117,6 +117,20 @@
 		</dependency>
 		
 		<!-- 마이바티스 설정 파일 -->
+		<!-- 
+			MyBatis 라이브러리 
+			1. MyBatis는 SQL을 XML 또는 애너테이션 방식으로 매핑하여 사용할 수 있는 SQL 매퍼 프레임워크
+			2. 이 설정은 MyBatis의 기본 기능을 제공하는 MyBatis 코어 라이브러리를 포함
+			
+			MyBatis-Spring 연동 라이브러리
+			1. Spring 프레임워크와 MyBatis를 통합하여 사용하기 위한 라이브러리
+			2. Spring의 SqlSessionFactoryBean을 활용하여 MyBatis의 SqlSessionFactory를 설정할 수 있음
+			
+			Spring JDBC 라이브러리
+			1. Spring JDBC를 지원하는 라이브러리
+			2. MyBatis는 내부적으로 JDBC를 사용하여 DB와 연결하므로, Spring JDBC 라이브러리가 필요함
+		-->
+		
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>

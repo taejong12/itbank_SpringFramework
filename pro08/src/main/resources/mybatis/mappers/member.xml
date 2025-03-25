@@ -3,6 +3,33 @@
 	"-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!-- 
+	<mapper namespace="mapper.member">
+	1. 해당 Mapper의 고유한 네임스페이스(이름 공간)
+	2. SQL을 호출할 때 namespace.id 형식으로 접근할 수 있음
+	
+	
+	resultMap이란?
+	1. SQL 조회 결과(ResultSet)를 Java 객체로 변환하는 규칙을 정의하는 매핑 설정
+	2. MyBatis에서 데이터를 자동으로 매핑할 때, 단순한 경우 resultType을 사용할 수도 있지만, 
+		컬럼명과 필드명이 다르거나 복잡한 매핑이 필요할 때 resultMap을 사용함
+	3. 연관관계 매핑 (JOIN 조회 시) 객체를 내부 객체로 매핑할 때
+	4. 기본적인 resultType이 지원하지 않는 복잡한 매핑이 필요할 때
+	
+		
+	1. id="memResult" -> memResult 라는 이름으로 resultMap을 정의
+	2. type="memberDTO" -> SQL 결과를 memberDTO 클래스의 객체로 변환
+	3. <result property="..." column="..." />
+		DB 컬럼(column) -> Java 객체의 필드(property) 매핑
+		DB의 id 컬럼 값이 Java의 memberDTO.id 필드로 매핑됨
+
+	1. id="memMap" -> memMap 이라는 이름의 resultMap 을 정의
+	2. type="java.util.HashMap" -> SQL 결과를 HashMap<String, Object> 로 변환
+	3. <result> 태그로 컬럼과 키-값 매핑을 정의
+		SQL에서 조회된 데이터가 HashMap<String, Object> 형태로 반환됨
+		컬럼명이 키(key), 컬럼 값이 값(value)가 됨
+ -->
+
 <mapper namespace="mapper.member">
 	<resultMap type="memberDTO" id="memResult">
 		<result property="id" column="id" />
@@ -18,36 +45,30 @@
 		<result property="email" column="email" />
 		<result property="joinDate" column="joinDate" />
 	</resultMap>
-	
-	
+
 	<select id="selectAllMemberList" resultMap="memResult">
 		<![CDATA[
 			select * from member order by joinDate desc
 		]]>
 	</select>
+	
 	<select id="selectId" resultType="String">
 		select * from member where id='hong'
 	</select>
+	
 	<select id="selectCount" resultType="Integer">
 		select count(*) from member
 	</select>
-	<select id="selectMember" resultType="memberDTO">
-		select * from member where id='hong'
-	</select>
+	
 	<select id="selectAllMemberMap" resultMap="memMap">
 		select * from member order by joinDate desc
 	</select>
-	<select id="selectMemberById" parameterType="String" 
-			resultType="memberDTO">
+	
+	<select id="selectMemberById" parameterType="String" resultType="memberDTO">
 		select * from member where id=#{id}
 	</select>
-	<select id="selectMemberByPwd" parameterType="String"
-			resultMap="memResult">
+	
+	<select id="selectMemberByPwd" parameterType="String" resultMap="memResult">
 		select * from member where pwd=#{pwd}		
 	</select>
 </mapper>
-
-
-
-
-
