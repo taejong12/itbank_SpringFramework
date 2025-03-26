@@ -8,23 +8,17 @@
 </head>
 <body>
 	<form method="post" 
-		action="/pro08/test06/updateMember.do">
+		action="/pro08/test07/delMember.do">
 	<table border="1" align="center" width="80%">
 		<tr align="center" bgcolor="lightgreen">
 			<th>아이디</th>
-			<th>암호</th>
-			<th>이름</th>
-			<th>이메일</th>
 		</tr>
 		<tr align="center">
 			<td><input type="text" name="id"></td>
-			<td><input type="password" name="pwd"></td>
-			<td><input type="text" name="name"></td>
-			<td><input type="text" name="email"></td>
 		</tr>
 		<tr align="center">
-			<td colspan="4">
-			<input type="submit" value="회원수정">	
+			<td>
+			<input type="submit" value="회원삭제">	
 			</td>
 		</tr>
 	</table>

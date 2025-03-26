@@ -1,7 +1,5 @@
 package com.test.pro08.ex06;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,10 +12,8 @@ public class MemberDAO {
 	SqlSession session;
 
 	public void updateMember(MemberDTO m) {
-		// TODO Auto-generated method stub
-		int result = 
-			session.update("mapper.member.updateMember", m);
+		// "mapper.member.updateMember": MyBatis 매퍼 파일(mapper.xml)에서 정의된 SQL ID
+		// m 수정할 회원 정보 객체 전달
+		session.update("mapper.member.updateMember", m);
 	}
-	
-	
 }

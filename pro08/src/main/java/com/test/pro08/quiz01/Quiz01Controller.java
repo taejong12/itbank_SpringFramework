@@ -31,12 +31,3 @@ public class Quiz01Controller {
 	}
 
 }
-
-
-
-
-
-
-
-
-

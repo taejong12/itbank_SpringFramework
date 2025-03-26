@@ -12,20 +12,16 @@ public class Quiz04DAO {
 	SqlSession session;
 
 	public MemberDTO selectMemberById(String id) {
-		// TODO Auto-generated method stub
 		MemberDTO member =
 			session.selectOne
-				("mapper.member.selectMemberById", id);
+				("mapper.quiz.selectMemberById", id);
 		return member;
 	}
 
 	public MemberDTO selectMemberIdPwd(MemberDTO m) {
-		// TODO Auto-generated method stub
 		MemberDTO member =
 			session.selectOne
-				("mapper.member.selectMemberIdPwd", m);
+				("mapper.quiz.selectMemberIdPwd", m);
 		return member;
 	}
-	
-	
 }

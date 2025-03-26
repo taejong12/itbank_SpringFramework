@@ -14,7 +14,6 @@ public class MemberDAO {
 	SqlSession session;
 
 	public List<MemberDTO> searchMember(MemberDTO m) {
-		// TODO Auto-generated method stub
 		List<MemberDTO> membersList =
 			session.selectList
 				("mapper.member.searchMember", m);
@@ -22,7 +21,6 @@ public class MemberDAO {
 	}
 
 	public List<MemberDTO> searchMember2(MemberDTO m) {
-		// TODO Auto-generated method stub
 		List<MemberDTO> membersList =
 			session.selectList
 				("mapper.member.searchMember2", m);
@@ -30,7 +28,6 @@ public class MemberDAO {
 	}
 
 	public List<MemberDTO> foreachSelect(List<String> nameList) {
-		// TODO Auto-generated method stub
 		List<MemberDTO> membersList =
 			session.selectList
 				("mapper.member.foreachSelect", nameList);

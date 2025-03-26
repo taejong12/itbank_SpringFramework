@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="mapper.quiz">
+	<resultMap type="memberDTO" id="memResult">
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="joinDate" column="joinDate" />
+	</resultMap>
+	
+	<!-- 
+		<sql> 태그란?
+		1. 재사용 가능한 SQL 문을 정의하는 태그
+		2. 이렇게 정의된 SQL 문은 다른 쿼리에서 <include refid="..." />를 사용하여 참조할 수 있음
+		3. id="sel" -> "sel" 이라는 재사용 가능한 SQL 블록을 정의
+		4. SELECT * FROM member 해당 SQL 문을 저장
+		
+		<sql> 태그 장점
+		1. 중복 제거 -> 같은 SQL 문을 여러 번 작성할 필요 없음
+		2. 유지보수 용이 -> 한 곳에서 수정하면 모든 곳에 반영됨
+		3. 코드 가독성 증가 -> 핵심 SQL 로직을 분리하여 관리 가능
+	 -->
+	 
+	<sql id="sel">
+		select * from member
+	</sql>
+
+	<select id="selectMember" resultType="memberDTO">
+		select * from member where id='hong'
+	</select>
+	
+	<select id="selectName" parameterType="String" 
+			resultType="String">
+		select name from member where id=#{id}		
+	</select>
+	
+	<select id="loginCheck" parameterType="memberDTO" 
+			resultType="int">
+		select count(*) from member where id=#{id} and pwd=#{pwd}
+	</select>
+	
+	<select id="selectAllMemberList" resultMap="memResult">
+		<!--select * from member -->
+		<include refid="sel" />
+		order by joinDate desc
+	</select>
+	
+	<insert id="insertMemberMap" parameterType="java.util.HashMap">
+		insert into member values
+			(#{id},#{pwd},#{name},#{email}, sysdate)
+	</insert>
+	
+	<select id="selectMemberById" parameterType="String" 
+			resultType="memberDTO">
+		select * from member where id=#{id}
+	</select>
+	
+	<select id="selectMemberIdPwd" 
+		parameterType="memberDTO" resultType="memberDTO">
+		select * from member where id=#{id} and pwd=#{pwd}
+	</select>
+	
+	<!-- 
+		오라클에서는 LIKE '%값%' 형태로 입력해줘야 함
+		
+		'%#{email}%' 이렇게 사용할 경우 MyBatis 내부적으로 #{email}을 바인딩(값을 채워 넣음)하고 동작할 때 
+		'%#{email}%' → '%' 'email변수값' '%' 이러한 형태로 변환됨
+		각 따옴표가 따로 놀면서 SQL 오류 발생
+		
+		Oracle에서 문자열 결합 연산자인 || 사용해서 문자열을 합쳐야 함
+		
+		Mybatis 내부적으로 변환되는 과정 -> '' 구분되어있는 문자열들을 || 결합 연산자를 통해서 합침
+		'%'||#{email}||'%' -> '%' || 'email변수값' || '%' -> '%email변수값%'
+		'%email변수값%' 최종값으로 정상 동작함
+	 -->
+	<select id="selectEmail" resultMap="memResult"
+		parameterType="memberDTO">
+		<include refid="sel" />
+		where email like '%'||#{email}||'%'
+	</select>
+</mapper>

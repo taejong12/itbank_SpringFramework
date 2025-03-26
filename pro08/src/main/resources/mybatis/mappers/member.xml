@@ -71,4 +71,76 @@
 	<select id="selectMemberByPwd" parameterType="String" resultMap="memResult">
 		select * from member where pwd=#{pwd}		
 	</select>
+	
+	<insert id="insertMember" parameterType="memberDTO">
+		insert into member values
+			(#{id},#{pwd},#{name},#{email}, sysdate)
+	</insert>
+	
+	<update id="updateMember" parameterType="memberDTO">
+		update member set pwd=#{pwd}, name=#{name},
+			email=#{email} where id=#{id}
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		delete from member where id=#{id}
+	</delete>
+	
+	<select id="searchMember" parameterType="memberDTO"
+		resultMap="memResult">
+		select * from member
+		<!-- <where> 태그: 동적으로 WHERE 절을 추가함 -->
+		<where>
+			<!-- <if> 태그: 조건문 -->
+			<if test="id != '' and id != null">
+				id = #{id}
+			</if>
+			<if test="pwd != '' and pwd != null">
+				and pwd=#{pwd}
+			</if>
+		</where>
+		order by joinDate desc	
+	</select>
+	
+	<select id="searchMember2" parameterType="memberDTO"
+		resultMap="memResult">
+		select * from member
+		<where>
+			<!-- <choose>: switch-case 처럼 동작, 하나의 조건만 실행됨 -->
+			<choose>
+				<when test="id != '' and id != null
+				 and pwd != '' and pwd != null">
+				 	id=#{id} and pwd=#{pwd}
+				 </when>
+				 <when test="id != '' and id != null">
+				 	id=#{id}
+				 </when>
+				 <when test="pwd != '' and pwd != null">
+				 	pwd=#{pwd}
+				 </when>
+			</choose>
+		</where>
+		order by joinDate desc	
+	</select>
+	
+	<select id="foreachSelect" resultMap="memResult"
+		parameterType="java.util.Map">
+		select * from member where name in
+		<!-- 
+			다중검색처리
+			<foreach>: 리스트 데이터를 반복 처리하여 IN 조건을 생성함
+			collection="list" -> 전달받은 리스트를 사용
+			item="item" -> 리스트의 각 요소를 #{item}으로 바인딩
+			open="(", separator=",", close=")" -> (값1, 값2, 값3, ...) 형식 유지
+		 -->
+		<foreach collection="list" item="item"
+				open="(" separator="," close=")">
+			#{item}
+		</foreach>	
+		order by joinDate desc		
+	</select>
+	
+	<select id="selectMember" resultType="memberDTO">
+		select * from member where id='hong'
+	</select>
 </mapper>

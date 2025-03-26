@@ -21,6 +21,12 @@ public class MemberController {
 	@Autowired
 	MemberDAO dao;
 	
+	@RequestMapping("/searchMemberForm.do")
+	public String searchMember(HttpServletRequest request,
+			HttpServletResponse response) {
+		return "/test08/searchMemberForm";
+	}
+	
 	@RequestMapping("/searchMember.do")
 	public ModelAndView searchMember(
 			@ModelAttribute MemberDTO m,
@@ -34,10 +40,10 @@ public class MemberController {
 		return mav;
 	}
 	
-	@RequestMapping("/loginForm.do")
-	public String loginForm(HttpServletRequest request,
+	@RequestMapping("/searchMemberForm2.do")
+	public String searchMember2(HttpServletRequest request,
 			HttpServletResponse response) {
-		return "/test08/loginForm";
+		return "/test08/searchMemberForm2";
 	}
 	
 	@RequestMapping("/searchMember2.do")
@@ -60,7 +66,7 @@ public class MemberController {
 		List<String> nameList = new ArrayList<String>();
 		nameList.add("이순신");
 		nameList.add("유관순");
-		nameList.add("홍길순");
+		nameList.add("123");
 		
 		
 		List<MemberDTO> membersList =
@@ -71,7 +77,3 @@ public class MemberController {
 		return mav;
 	}
 }
-
-
-
-

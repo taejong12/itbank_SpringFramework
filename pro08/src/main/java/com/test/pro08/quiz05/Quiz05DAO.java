@@ -13,13 +13,9 @@ public class Quiz05DAO {
 	@Autowired
 	SqlSession session;
 
-
 	public List<MemberDTO> selectEmail(MemberDTO m) {
-		// TODO Auto-generated method stub
 		List<MemberDTO> membersList =
-			session.selectList("mapper.member.selectEmail", m);
+			session.selectList("mapper.quiz.selectEmail", m);
 		return membersList;
 	}
-	
-	
 }

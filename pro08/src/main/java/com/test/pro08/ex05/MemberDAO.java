@@ -14,7 +14,7 @@ public class MemberDAO {
 	SqlSession session;
 
 	public int insertMember(MemberDTO m) {
-		// TODO Auto-generated method stub
+		// id="insertMember" SQL ID를 실행하여 회원 정보를 데이터베이스에 저장함
 		int result = 
 			session.insert
 				("mapper.member.insertMember", m);
@@ -22,7 +22,6 @@ public class MemberDAO {
 	}
 
 	public List<MemberDTO> listMembers() {
-		// TODO Auto-generated method stub
 		List<MemberDTO> membersList = 
 			session.selectList
 				("mapper.member.selectAllMemberList");

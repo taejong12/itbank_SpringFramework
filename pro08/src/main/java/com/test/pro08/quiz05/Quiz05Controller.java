@@ -40,16 +40,3 @@ public class Quiz05Controller {
 		return mav;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

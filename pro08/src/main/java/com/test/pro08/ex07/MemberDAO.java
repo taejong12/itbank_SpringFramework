@@ -1,12 +1,10 @@
 package com.test.pro08.ex07;
 
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.test.pro08.ex01.MemberDTO;
 
 @Repository("memberDAO7")
 public class MemberDAO {
@@ -14,9 +12,8 @@ public class MemberDAO {
 	SqlSession session;
 
 	public void deleteMember(String id) {
-		// TODO Auto-generated method stub
+		// "mapper.member.deleteMember": MyBatis 매퍼 파일(mapper.xml)에서 정의된 SQL ID
+		// id 삭제할 변수 전달
 		session.delete("mapper.member.deleteMember", id);
 	}
-	
-	
 }

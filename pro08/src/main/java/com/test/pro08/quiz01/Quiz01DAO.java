@@ -13,7 +13,7 @@ public class Quiz01DAO {
 	
 	public MemberDTO selectMember() {
 		MemberDTO member = 
-			sqlSession.selectOne("mapper.member.selectMember");
+			sqlSession.selectOne("mapper.quiz.selectMember");
 		return member;
 	}
 }

@@ -15,20 +15,16 @@ public class Quiz03DAO {
 	SqlSession session;
 
 	public int insertMember(Map<String, String> m) {
-		// TODO Auto-generated method stub
 		int result = 
 			session.insert
-				("mapper.member.insertMemberMap", m);
+				("mapper.quiz.insertMemberMap", m);
 		return result;
 	}
 
 	public List<MemberDTO> listMembers() {
-		// TODO Auto-generated method stub
 		List<MemberDTO> membersList = 
 			session.selectList
-				("mapper.member.selectAllMemberList");
+				("mapper.quiz.selectAllMemberList");
 		return membersList;
 	}
-	
-	
 }
