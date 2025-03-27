@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h3>업로드가 완료되었습니다.</h3>
-	<h3>파일 업로드 하기(썸네일 저장하기(원본 X))</h3>
+	<h3>파일 업로드 하기(썸네일 바로 출력(저장 X))</h3>
 	<label>아이디:</label>
 		<input type="text" value="${map.id}" readonly>
 	<label>이름:</label>

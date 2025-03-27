@@ -46,7 +46,7 @@ public class FileDownloadController2 {
 			Thumbnails.of(file)					// 원본 파일 기반
 						.size(50, 50)			// 50x50 크기로 저장
 						.outputFormat("png")	// png로 저장
-						.toFile(thumbnail);		// thumbnail 파일로 저장 
+						.toFile(thumbnail);		// thumbnail 파일로 저장
 		}
 		
 		FileInputStream in = new FileInputStream(thumbnail);

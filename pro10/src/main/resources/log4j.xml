@@ -63,7 +63,7 @@
 	 -->
 	 
 	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
-	    <param name="File" value="C:\\Users\\dbxow\\Desktop\\developtool\\sts-bundle\\itbank_SpringFramework\\pro10\\log\\output" />
+	    <param name="File" value="C:\\Users\\dbxow\\Desktop\\developtool\\sts-bundle\\itbank_SpringFramework\\pro10\\log\\output.log" />
 	    <param name="Append" value="true" />
 	    <layout class="org.apache.log4j.PatternLayout">
 			<param name="DatePattern" value="','yyyy-MM-dd" />

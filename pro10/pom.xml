@@ -182,6 +182,32 @@
 		</dependency>
 		
 		<!-- 스프링 이메일 -->
+		<!-- 
+			spring-contest-support
+			1. Spring 에서 이메일 전송을 지원하는 클래스들을 포함하는 라이브러리
+			2. JavaMailSender 같은 메일 전송 기능을 제공하는 클래스가 포함되어 있음
+			3. 이 라이브러리를 추가하면 Spring의 JavaMailSender를 이용해서 이메일을 쉽게 보낼 수 있음
+			
+			javax.mail-api
+			1. Java에서 이메일을 처리하기 위한 API
+			2. JavaMail API는 이메일을 보낼 때 SMTP, IMAP, POP3 같은 프로토코을 지원
+			3. javax.mail 패키지 안에 있는 Session, Message, Transport 등의 클래스를 제공하여 메일을 주고 받을 수 있음
+			4. javax.mail-api 만 추가하면 실제 이메일을 보낼 수 없음
+			5. API만 제공할 뿐, 실제 구현체가 없기 때문에 com.sun.mail 라이브러리가 추가로 필요함
+			
+			javax.mail
+			1. javax.mail-api 의 실제 구현체
+			2. javax.mail-api는 메일 전송을 위한 인터페이스만 제공하는데, 이 라이브러리는 해당 인터페이스의 구현체를 포함하고 있음
+			3. SMTP, IMAP, POP3 프로토콜을 실제로 처리할 수 있도록 기능을 제공함
+			
+			세 가지 의존성은 Spring에서 이메일을 전송하기 위해 필요한 라이브러리들
+			spirng-context-support -> Spring에서 JavaMail을 지원하는 기능 제공
+			javax.mail-api -> JavaMail API (메일 전송 관련 인터페이스 제공)
+			javax.mail -> JavaMail API의 실제 구현체 (SMTP, IMAP, POP3 처리 가능)
+			
+			이 라이브러리들을 추가하면 Spring에서 JavaMailSender를 이용하여 이메일을 보낼 수 있음
+		 -->
+		 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>

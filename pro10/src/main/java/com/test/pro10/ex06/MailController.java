@@ -22,8 +22,8 @@ public class MailController {
 		PrintWriter out =response.getWriter();
 		
 		service.sendMail("title", "developertaejong@gmail.com", "contents");
-		service.sendPreConfigureMail("contents");
+		service.sendPreConfigureMail("테스트 이메일 본문 내용");
 		
-		out.print("이메일 발송 완료");
+		out.print("메일이 전송 되었습니다.");
 	}
 }

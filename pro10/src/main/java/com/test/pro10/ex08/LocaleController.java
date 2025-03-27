@@ -9,7 +9,6 @@ public class LocaleController {
 	
 	@RequestMapping("/test08/locale.do")
 	public String locale() {
-		System.out.println("localeController");
 		return "/test08/locale";
 	}
 }

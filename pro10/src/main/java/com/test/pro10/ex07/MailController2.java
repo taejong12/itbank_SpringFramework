@@ -23,7 +23,7 @@ public class MailController2 {
 		
 		String msg = "<html><body>";
 		msg += "<h1>내 강아지 보여줄게</h1>";
-		msg += "<img src='https://cdn.lecturernews.com/news/photo/202203/93345_312029_1841.jpg'><br>";
+		msg += "<img src='https://cdn.lecturernews.com/news/photo/202203/93345_312029_1841.jpg'><br><br>";
 		msg += "더 많은 사진은 <a href='https://www.zooseyo.or.kr/zooseyo_or_kr.html?'>여기를</a> 클릭";
 		msg += "</html></body>";
 		

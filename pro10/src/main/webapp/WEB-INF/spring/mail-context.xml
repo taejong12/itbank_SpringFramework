@@ -3,12 +3,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<!-- 수신자 고정 X -->
+	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>/WEB-INF/config/mail.properties</value>
+		</property>
+	</bean>
+	
+	<!-- 
+		수신자 고정 X -> 수신자를 동적으로 설정 가능
+		
+		1. 이메일을 발송하는 객체(JavaMailSenderImpl)를 설정한 Bean
+		2. host="smtp.gmail.com" -> 이메일을 보낼 SMTP 서버 주소 (여기서는 Gmail)
+		3. port-"587" -> SMTP 서버의 포트 번호 (TLS 사용 시 587)
+		4. username -> Gmail 계정
+		5. password -> Gmail 앱 비밀번호 (보안을 위해 환경 변수 또는 설정 파일을 사용하는 것이 좋음
+		6. mail.transport.protocol=smtp -> SMTP 프로토콜 사용
+		7. mail.smtp.auth=true -> SMTP 서버 인증 활성화
+		8. mail.smtp.starttls.enable=true -> TLS(보안 프로토콜) 활성화
+		9. mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory -> SSL 소켓 팩토리 사용
+		10. mail.debug=debug -> 디버깅 로그 활성화
+	-->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com"/>
-		<property name="port" value="587"/>
-		<property name="username" value="developertaejong@gmail.com"/>
-		<property name="password" value="askk wqfq irbh drol"/>
+		<property name="host" value="${mail.host}"/>
+		<property name="port" value="${mail.port}"/>
+		<property name="username" value="${mail.username}"/>
+		<property name="password" value="${mail.password}"/>
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.transport.protocol">smtp</prop>
@@ -20,10 +39,18 @@
 		</property>
 	</bean>
 	
-	<!-- 수신자 고정 -->
+	<!-- 
+		수신자 고정 -> 수신자/제목 고정, 내용만 변경 가능
+		
+		1. 기본적으로 사용할 이메일 메시지를 미리 정의한 Bean
+		2. <property name="to" value="받는 이메일"/> -> 기본 수신자 설정
+		3. <property name="from" value="보내는 이메일"/> -> 발신자 설정
+		4. <property name="subject" value="테스트 메일 입니다."/> -> 이메일 제목 설정
+		
+	-->
 	<bean id="preConfigureMessage" class="org.springframework.mail.SimpleMailMessage">
-		<property name="to" value="dbxowhdsla12@naver.com"/>
-		<property name="from" value="developertaejong@gmail.com"/>
+		<property name="to" value="${mail.to}"/>
+		<property name="from" value="${mail.from}"/>
 		<property name="subject" value="테스트 메일 입니다."/>
 	</bean>
 	

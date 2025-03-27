@@ -30,7 +30,10 @@ public class FileDownloadController3 {
 		if(file.exists()) {
 			// 썸네일 만들고 바로 클라이언트로 전송
 			// FileInputStream 사용 안함
-			Thumbnails.of(file).size(50, 50).outputFormat("png").toOutputStream(out);
+			Thumbnails.of(file)
+					.size(50, 50)			// 썸네일 크기 (50x50)
+					.outputFormat("png")	// 출력 포맷을 PNG로 설정
+					.toOutputStream(out);	// 파일로 저장하지 않고, OutputStream 으로 출력
 		}
 		
 		out.close();

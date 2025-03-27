@@ -15,7 +15,7 @@
 </script>
 </head>
 <body>
-	<h3>파일 업로드 하기(썸네일 저장하기(원본 X))</h3>
+	<h3>파일 업로드 하기(썸네일 바로 출력(저장 X))</h3>
 	<form method="post" action="/pro10/test05/upload.do" enctype="multipart/form-data">
 		<label>아이디: </label>
 			<input type="text" name="id"><br>

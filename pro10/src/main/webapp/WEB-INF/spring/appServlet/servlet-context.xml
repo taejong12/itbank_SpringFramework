@@ -7,15 +7,10 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
-	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
@@ -61,6 +56,15 @@
 		<beans:property name="defaultEncoding" value="UTF-8" />
 	</beans:bean>
 	
+	<!-- 
+		Interceptor(인터셉터) 설정 -> Spring Framework의 dispatcher-servlet.xml 같은 설정 파일에서 사용됨
+		LocaleInterceptor -> 주로 언어(locale) 설정이나 다국어 처리 같은 역할을 함
+		적용 URL 패턴 -> /test08/*.do, /*/*.do -> 해당 URL 요청이 들어오면 LocaleInterceptor 가 실행됨
+		
+		ViewNameInterceptor -> 주로 View 이름을 추출하거나, ModelAndView 처리를 담당
+		적용 URL 패턴 -> /*/*.do -> 해당 URL 요청이 들어오면 ViewNameInterceptor 가 실행됨
+	 -->
+	 
 	<interceptors>
 		<interceptor>
 			<mapping path="/test08/*.do"/>

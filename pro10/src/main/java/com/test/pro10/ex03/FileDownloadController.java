@@ -21,7 +21,8 @@ public class FileDownloadController {
 	
 	// "/test03/download.do?imageFileName=파일이름" 과 같은 URL로 요청하면 서버에 저장된 해당 파일을 다운로드할 수 있도록 처리하는 역할
 	@RequestMapping("/test03/download.do")
-	public void download(@RequestParam("imageFileName") String imageFileName, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void download(@RequestParam("imageFileName") String imageFileName, 
+			HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		// 다운로드할 파일 경로 설정
 		// IMAGE_REPO(기본 경로)와 imageFileName(사용자가 요청한 파일명)을 결합하여 파일의 전체 경로를 생성
