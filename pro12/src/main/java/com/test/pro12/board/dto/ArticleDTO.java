@@ -2,8 +2,6 @@ package com.test.pro12.board.dto;
 
 import java.sql.Date;
 
-
-
 public class ArticleDTO {
 	private int level;
 	private int articleNo;
